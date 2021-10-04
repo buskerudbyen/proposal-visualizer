@@ -1,4 +1,9 @@
+roles:
 - src: geerlingguy.firewall
   version: 2.5.0
 - src: dev-sec.ssh-hardening
   version: 9.7.0
+
+collections:
+- name: community.general
+  version: 3.7.0

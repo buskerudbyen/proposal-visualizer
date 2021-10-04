@@ -5,4 +5,27 @@
       - apache2
     state: present
 
+- name: Delete content & directory
+  file:
+    state: absent
+    path: /etc/apache2/sites-enabled/000-default.conf
+
+- name: Enable the Apache2 modules
+  community.general.apache2_module:
+    state: present
+    name: "{{ item }}"
+    ignore_configcheck: True
+    force: True
+  with_items:
+    - headers
+    - ssl
+    - rewrite
+    - md
+  notify: Restart apache
+
+- name: Install apache config
+  template:
+    src: site.conf
+    dest: "/etc/apache2/sites-enabled/{{ domain_name }}.conf"
+  notify: Restart apache
 
