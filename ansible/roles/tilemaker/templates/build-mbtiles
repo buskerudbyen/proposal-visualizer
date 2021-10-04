@@ -19,7 +19,9 @@ podman run --rm \
   --entrypoint tippecanoe \
   -v /var/tilemaker:/tilemaker:z \
     docker.io/morlov/tippecanoe \
-      -o tilemaker/filtered.mbtiles \
-      --force tilemaker/norway-filtered.geojson
+      -o tilemaker/norway-filtered.mbtiles \
+      --force \
+      tilemaker/norway-filtered.geojson
 
-mb-util filtered.mbtiles tiles
+mb-util norway-filtered.mbtiles tiles
+
