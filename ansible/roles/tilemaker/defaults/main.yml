@@ -1,0 +1,3 @@
+---
+pbf_download_url: http://download.geofabrik.de/europe/norway-latest.osm.pbf
+tilemaker_dir: /var/tilemaker

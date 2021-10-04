@@ -1,0 +1,4 @@
+- src: geerlingguy.firewall
+  version: 2.5.0
+- src: dev-sec.ssh-hardening
+  version: 9.7.0

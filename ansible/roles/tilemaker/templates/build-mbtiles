@@ -1,0 +1,25 @@
+#! /usr/bin/env fish
+
+set PBF_DOWNLOAD_URL {{ pbf_download_url }}
+set PBF_FILE norway.osm.pbf
+
+if test -f "$PBF_FILE"
+  echo "$PBF_FILE exists. Downloading updates."
+  pyosmium-up-to-date -v $PBF_FILE
+else
+  echo "$PBF_FILE does not exist."
+  curl --location --fail -s "$PBF_DOWNLOAD_URL" -o $PBF_FILE
+end
+
+osmium tags-filter $PBF_FILE w/buskerudbyen:cycleway -o norway-filtered.pbf -f pbf --overwrite
+osmium export norway-filtered.pbf -o norway-filtered.geojson
+
+# build tiles with tippecanoe
+podman run --rm \
+  --entrypoint tippecanoe \
+  -v /var/tilemaker:/tilemaker:z \
+    docker.io/morlov/tippecanoe \
+      -o tilemaker/filtered.mbtiles \
+      --force tilemaker/norway-filtered.geojson
+
+mb-util filtered.mbtiles tiles

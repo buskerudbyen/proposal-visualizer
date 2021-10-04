@@ -1,0 +1,8 @@
+[Unit]
+Description=Remove old podman data (images, volumes, networks) that are older than a week
+
+[Service]
+ExecStart=/usr/bin/podman system prune -a -f --filter until={{ podman_prune_max_age }}
+
+[Install]
+WantedBy=multi-user.target
