@@ -27,6 +27,7 @@
   template: src={{ item }} dest=/var/tilemaker/
   with_items:
     - build-mbtiles
+  notify: Restart tilemaker
 
 - name: Make script executable
   file:
@@ -38,6 +39,7 @@
   with_items:
     - tilemaker.service
     - tilemaker.timer
+  notify: Restart tilemaker
 
 - name: Start tilemaker.timer
   systemd:

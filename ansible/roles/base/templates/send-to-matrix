@@ -6,7 +6,7 @@
 
 msgtype=m.text
 homeserver=matrix.org
-room=!UXrSFkkJoppiEZEfgC:matrix.org
+room=!pdeJZYwcerTHonJTtn:matrix.org
 accesstoken={{ matrix_bot_token }}
 
 echo "Sending Matrix message '$1'"

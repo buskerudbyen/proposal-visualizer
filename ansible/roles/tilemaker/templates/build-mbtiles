@@ -12,16 +12,20 @@ else
 end
 
 osmium tags-filter $PBF_FILE w/buskerudbyen:cycleway -o norway-filtered.pbf -f pbf --overwrite
-osmium export norway-filtered.pbf -o norway-filtered.geojson
+osmium export norway-filtered.pbf -o norway-filtered.geojson --overwrite
 
 # build tiles with tippecanoe
 podman run --rm \
   --entrypoint tippecanoe \
   -v /var/tilemaker:/tilemaker:z \
     docker.io/morlov/tippecanoe \
-      -o tilemaker/norway-filtered.mbtiles \
+      --drop-densest-as-needed \
+      --output=tilemaker/norway-filtered.mbtiles \
       --force \
+      -l cycleways \
       tilemaker/norway-filtered.geojson
 
-mb-util norway-filtered.mbtiles tiles
+mb-util --image_format=pbf norway-filtered.mbtiles tiles
+
+send-to-matrix "tilemaker successful"
 
