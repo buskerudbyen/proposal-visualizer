@@ -3,6 +3,7 @@
   package:
     name:
       - apache2
+      - libapache2-mod-md
     state: present
 
 - name: Delete content & directory
