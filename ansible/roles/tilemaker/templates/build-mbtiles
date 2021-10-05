@@ -20,9 +20,10 @@ podman run --rm \
   -v /var/tilemaker:/tilemaker:z \
     docker.io/morlov/tippecanoe \
       --drop-densest-as-needed \
-      --output=tilemaker/norway-filtered.mbtiles \
+      --output-to-directory=tilemaker/tiles/ \
+      --no-tile-compression \
       --force \
-      -l cycleways \
+      -l cycleway \
       tilemaker/norway-filtered.geojson
 
 mb-util --image_format=pbf norway-filtered.mbtiles tiles
