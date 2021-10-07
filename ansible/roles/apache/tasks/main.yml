@@ -20,6 +20,7 @@
   with_items:
     - headers
     - ssl
+    - http2
     - rewrite
     - md
   notify: Restart apache
