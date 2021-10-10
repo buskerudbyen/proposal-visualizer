@@ -1,3 +1,10 @@
+var retina = (window.devicePixelRatio || (window.screen.deviceXDPI / window.screen.logicalXDPI)) > 1;
+
+let r = "";
+if(retina) {
+  r = "@2x"
+}
+
 var map = new maplibregl.Map({
   container: 'map', // container id
   style: {
@@ -6,7 +13,7 @@ var map = new maplibregl.Map({
       'raster-tiles': {
         'type': 'raster',
         'tiles': [
-          'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=a09616e6150b4c0fa635a23efcda2af8'
+          `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`
         ],
         'tileSize': 256,
         'attribution':
@@ -63,3 +70,4 @@ map.on('load', function () {
     }
   });
 });
+
