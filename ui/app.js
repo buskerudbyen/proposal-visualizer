@@ -38,7 +38,7 @@ var map = new maplibregl.Map({
 map.on('load', function () {
   map.addSource('tippecanoe', {
     'type': 'vector',
-    'tiles': [ 'https://byvekstavtale.leonard.io/{z}/{x}/{y}.pbf' ],
+    'tiles': [ 'https://byvekstavtale.leonard.io/tiles/{z}/{x}/{y}.pbf' ],
     'minzoom': 6,
     'maxzoom': 14
   });
