@@ -1,78 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Add a raster tile source</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="app.js">
+    </script>
 
-  <title>VectorGrid.Protobuf example</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA=" crossorigin="anonymous">
-
-</head>
-<body style='margin:0'>
-
-  <div id="map" style="width: 100vw; height: 100vh; background: white"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js" integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/leaflet-vector-tile-layer@0.6.0/dist/VectorTileLayer.umd.min.js" integrity="sha256-p75FJBCwztgBEP64y+UfRBqWedEsPF0FPlsSMvSUgYc=" crossorigin="anonymous"></script>
-
-  <script>
-
-    const style={
-      cycleway: {
-        weight: 6,
-        fillColor: '#f2b648',
-        color: '#4c69db',
-        fillOpacity: 0.5,
-        opacity: 1
-      }
-    };
-
-    const bikeLayer = L.tileLayer('https://tile.thunderforest.com/outdoors/{z}/{x}/{y}'+ (L.Browser.retina? '@2x': '') + '.png?apikey=a09616e6150b4c0fa635a23efcda2af8', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.thunderforest.com/">Thunderforest</a>'
-    });
-
-    const url = "https://byvekstavtale.leonard.io/{z}/{x}/{y}.pbf";
-    const options = {
-        // A function that will be used to decide whether to include a
-        // feature or not. If specified, it will be passed the vector-tile
-        // feature, the layer name and the zoom level. The default is to
-        // include all features.
-        //filter, // default undefined
-
-        // Specify zoom range in which tiles are loaded. Tiles will be
-        // rendered from the same data for Zoom levels outside the range.
-        //minDetailZoom, // default undefined
-        maxDetailZoom: 13, // default undefined
-
-        // Styling options for L.Polyline or L.Polygon. If it is a
-        // function, it will be passed the vector-tile feature, the layer
-        // name and the zoom level as parameters.
-        /*style: (feature, layer, zoom) => {
-          return {
-              weight: 6,
-              fillColor: '#f2b648',
-              color: '#000',
-              fillOpacity: 1,
-              opacity: 1
-          }
-
-        },*/ // default undefined
-
-        vectorTileLayerStyles: style
-
-    };
-
-    const layer = new VectorTileLayer(url, options);
-
-
-    var map = L.map('map',{
-      layers: [bikeLayer, layer],
-      center: [59.6104, 10.4344],
-      zoom: [13]
-    });
-
-  </script>
-</body>
+  </body>
 </html>
-
-
