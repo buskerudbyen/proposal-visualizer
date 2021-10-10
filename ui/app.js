@@ -47,7 +47,19 @@ map.on('load', function () {
     'paint': {
       'line-opacity': 1,
       'line-color': '#1965e8',
-      'line-width': 6
+      "line-width": {
+        "base": 0.9,
+        "stops": [
+          [
+            11,
+            1
+          ],
+          [
+            20,
+            6
+          ]
+        ]
+      }
     }
   });
 });
