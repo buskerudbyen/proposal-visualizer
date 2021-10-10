@@ -30,6 +30,7 @@ var map = new maplibregl.Map({
       }
     ]
   },
+  hash: true,
   center: [10.4051, 59.6153],
   zoom: 15
 });

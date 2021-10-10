@@ -11,6 +11,12 @@
     state: absent
     path: /etc/apache2/sites-enabled/000-default.conf
 
+- name: Create a symbolic link for tiles
+  ansible.builtin.file:
+    src: /var/tilemaker/tiles
+    dest: /var/www/html/tiles
+    state: link
+
 - name: Enable the Apache2 modules
   community.general.apache2_module:
     state: present
