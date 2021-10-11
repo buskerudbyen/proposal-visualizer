@@ -30,7 +30,7 @@ podman run --rm \
       tilemaker/cycleway-existing.geojson \
       tilemaker/cycleway-proposed.geojson
 
-mb-util --image_format=pbf norway-filtered.mbtiles tiles
+#mb-util --image_format=pbf norway-filtered.mbtiles tiles
 
 send-to-matrix "tilemaker successful"
 
