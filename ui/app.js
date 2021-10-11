@@ -30,7 +30,13 @@ const layers = [
     label: "Positron",
     name: "positron",
     url: `https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}${r}.png`
+  },
+  {
+    label: "Atlas",
+    name: "atlas",
+    url: `https://tile.thunderforest.com/atlas/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`
   }
+
 ];
 
 
@@ -149,7 +155,7 @@ map.on('load', function () {
     {
       "id": "proposed-casing",
       "layout": {
-        "line-cap": "butt",
+        "line-cap": "round",
         "line-join": "round",
         "visibility": "visible"
       },
