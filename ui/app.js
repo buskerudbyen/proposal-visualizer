@@ -43,11 +43,46 @@ map.on('load', function () {
     'maxzoom': 14
   });
 
+
+  map.addLayer(
+    {
+      "id": "existing-casing",
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "metadata": {},
+      "paint": {
+        "line-color": "#fff",
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [
+              5,
+              0
+            ],
+            [
+              7,
+              0.7
+            ],
+            [
+              20,
+              14
+            ]
+          ]
+        }
+      },
+      "source": "tippecanoe",
+      "source-layer": "cyclewayexisting",
+      "type": "line"
+    },
+  )
   map.addLayer({
-    'id': 'cycleway',
+    'id': 'cycleway-existing',
     'type': 'line',
     'source': 'tippecanoe',
-    'source-layer': 'cycleway',
+    'source-layer': 'cyclewayexisting',
     'layout': {
       'line-cap': 'round',
       'line-join': 'round'
@@ -70,5 +105,73 @@ map.on('load', function () {
       }
     }
   });
+
+  map.addLayer(
+
+    {
+      "id": "proposed-casing",
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "metadata": {},
+      "paint": {
+        "line-color": "#000",
+        "line-width": {
+          "base": 1.2,
+          "stops": [
+            [
+              5,
+              0
+            ],
+            [
+              7,
+              0.7
+            ],
+            [
+              20,
+              14
+            ]
+          ]
+        }
+      },
+      "source": "tippecanoe",
+      "source-layer": "cyclewayproposed",
+      "type": "line"
+    },
+  )
+
+  map.addLayer({
+    'id': 'cycleway-proposed',
+    'type': 'line',
+    'source': 'tippecanoe',
+    'source-layer': 'cyclewayproposed',
+    'layout': {
+      'line-cap': 'round',
+      'line-join': 'round'
+    },
+    'paint': {
+      'line-opacity': 1,
+      'line-color': '#fcf932',
+      "line-width": {
+        "base": 0.9,
+        "stops": [
+          [
+            11,
+            1
+          ],
+          [
+            20,
+            6
+          ]
+        ]
+      }
+    }
+  });
+
+
+
+
 });
 
