@@ -40,6 +40,9 @@ layers.forEach((config) => {
 });
 
 
+const url = new URL(window.location);
+const currentBackground = url.searchParams.get('background') || "outdoor";
+
 const makeBackgroundLayer = (name) => {
   return {
     'id': 'background',
@@ -56,7 +59,7 @@ var map = new maplibregl.Map({
     'version': 8,
     'sources': sources,
     'layers': [
-      makeBackgroundLayer("outdoor")
+      makeBackgroundLayer(currentBackground)
     ]
   },
   hash: true,
@@ -203,6 +206,9 @@ map.on('load', function () {
   dropdown.onchange = (evt) => {
     map.removeLayer("background");
     map.addLayer(makeBackgroundLayer(evt.target.value), "existing-casing");
+    const url = new URL(window.location);
+    url.searchParams.set('background', evt.target.value);
+    window.history.pushState({}, '', url);
   };
 
 });
