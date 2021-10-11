@@ -26,13 +26,13 @@ done
 
 # build tiles with tippecanoe
 podman run --rm \
+  --log-driver=journald \
   --entrypoint tippecanoe \
   -v /var/tilemaker:/tilemaker:z \
     docker.io/morlov/tippecanoe \
       --drop-densest-as-needed \
       --output-to-directory=tilemaker/tiles/ \
       --no-tile-compression \
-      --log-driver=journald \
       --force \
       tilemaker/cycleway-existing.geojson \
       tilemaker/cycleway-proposed.geojson
