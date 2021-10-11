@@ -9,32 +9,38 @@ const layers = [
   {
     label: "Outdoor",
     name: "outdoor",
-    url: `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`
+    url: `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`,
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="http://thunderforest.com">Thunderforest</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   },
   {
     label: "Toner",
     name: "toner",
-    url: `https://stamen-tiles-a.a.ssl.fastly.net/toner/{z}/{x}/{y}${r}.png`
+    url: `https://stamen-tiles-a.a.ssl.fastly.net/toner/{z}/{x}/{y}${r}.png`,
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="https://stamen.com">Stamen</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   },
   {
     label: "Watercolor",
     name: "watercolor",
-    url: `https://stamen-tiles-a.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png`
+    url: `https://stamen-tiles-a.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png`,
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="https://stamen.com">Stamen</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   },
   {
     label: "CyclOSM",
     name: "cyclosm",
-    url: "https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png"
+    url: "https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png",
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="https://cyclosm.com">CyclOSM</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   },
   {
     label: "Positron",
     name: "positron",
-    url: `https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}${r}.png`
+    url: `https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}${r}.png`,
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="http://carto.com">Catro</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   },
   {
     label: "Atlas",
     name: "atlas",
-    url: `https://tile.thunderforest.com/atlas/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`
+    url: `https://tile.thunderforest.com/atlas/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`,
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="http://thunderforest.com">Thunderforest</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   }
 
 ];
@@ -46,8 +52,7 @@ layers.forEach((config) => {
     'type': 'raster',
     'tiles': [ config.url ],
     'tileSize': 256,
-    'attribution':
-    'Map tiles by <a target="_top" rel="noopener" href="http://thunderforest.com">Thunderforest</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
+    'attribution': config.attribution
   };
 });
 
