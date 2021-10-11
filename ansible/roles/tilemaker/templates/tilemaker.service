@@ -6,6 +6,7 @@ StartLimitIntervalSec=1200
 StartLimitBurst=1
 
 [Service]
+Environment=HOME=/root
 WorkingDirectory=/var/tilemaker
 ExecStart=/var/tilemaker/build-mbtiles
 Restart=on-failure
