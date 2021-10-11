@@ -5,29 +5,58 @@ if(retina) {
   r = "@2x"
 }
 
+const layers = [
+  { name: "outdoor",
+    url: `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`
+  },
+  {
+    name: "toner",
+    url: `http://a.tile.stamen.com/toner/{z}/{x}/{y}${r}.png`
+  },
+  {
+    name: "watercolor",
+    url: `http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg`
+  },
+  {
+    name: "cyclosm",
+    url: "https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png"
+  },
+  {
+    name: "positron",
+    url: `https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}${r}.png`
+  }
+];
+
+
+const sources = {};
+layers.forEach((config) => {
+  sources[config.name] = {
+    'type': 'raster',
+    'tiles': [ config.url ],
+    'tileSize': 256,
+    'attribution':
+    'Map tiles by <a target="_top" rel="noopener" href="http://thunderforest.com">Thunderforest</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
+  };
+});
+
+
+const makeBackgroundLayer = (name) => {
+  return {
+    'id': 'background',
+    'type': 'raster',
+    'source': name,
+    'minzoom': 0,
+    'maxzoom': 22
+  }
+}
+
 var map = new maplibregl.Map({
   container: 'map', // container id
   style: {
     'version': 8,
-    'sources': {
-      'raster-tiles': {
-        'type': 'raster',
-        'tiles': [
-          `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`
-        ],
-        'tileSize': 256,
-        'attribution':
-        'Map tiles by <a target="_top" rel="noopener" href="http://stamen.com">Stamen Design</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>, under <a target="_top" rel="noopener" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>'
-      }
-    },
+    'sources': sources,
     'layers': [
-      {
-        'id': 'simple-tiles',
-        'type': 'raster',
-        'source': 'raster-tiles',
-        'minzoom': 0,
-        'maxzoom': 22
-      }
+      makeBackgroundLayer("outdoor")
     ]
   },
   hash: true,
@@ -170,8 +199,11 @@ map.on('load', function () {
     }
   });
 
-
-
+  const dropdown = document.getElementById("layer");
+  dropdown.onchange = (evt) => {
+    map.removeLayer("background");
+    map.addLayer(makeBackgroundLayer(evt.target.value), "existing-casing");
+  };
 
 });
 
