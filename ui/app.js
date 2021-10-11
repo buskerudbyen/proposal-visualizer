@@ -41,8 +41,13 @@ const layers = [
     name: "atlas",
     url: `https://tile.thunderforest.com/atlas/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`,
     attribution: 'Map tiles by <a target="_top" rel="noopener" href="http://thunderforest.com">Thunderforest</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
+  },
+  {
+    label: "Terrain",
+    name: "terrain",
+    url: `https://stamen-tiles-a.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png`,
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="https://stamen.com">Stamen</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   }
-
 ];
 
 
