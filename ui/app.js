@@ -11,11 +11,11 @@ const layers = [
   },
   {
     name: "toner",
-    url: `http://a.tile.stamen.com/toner/{z}/{x}/{y}${r}.png`
+    url: `https://stamen-tiles-a.a.ssl.fastly.net/toner/{z}/{x}/{y}${r}.png`
   },
   {
     name: "watercolor",
-    url: `http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg`
+    url: `https://stamen-tiles-a.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png`
   },
   {
     name: "cyclosm",
