@@ -6,22 +6,28 @@ if(retina) {
 }
 
 const layers = [
-  { name: "outdoor",
+  {
+    label: "Outdoor",
+    name: "outdoor",
     url: `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`
   },
   {
+    label: "Toner",
     name: "toner",
     url: `https://stamen-tiles-a.a.ssl.fastly.net/toner/{z}/{x}/{y}${r}.png`
   },
   {
+    label: "Watercolor",
     name: "watercolor",
     url: `https://stamen-tiles-a.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png`
   },
   {
+    label: "CyclOSM",
     name: "cyclosm",
     url: "https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png"
   },
   {
+    label: "Positron",
     name: "positron",
     url: `https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}${r}.png`
   }
@@ -203,6 +209,19 @@ map.on('load', function () {
   });
 
   const dropdown = document.getElementById("layer");
+
+  layers.forEach(l => {
+
+    var option = document.createElement("option");
+    option.value = l.name;
+    option.textContent = l.label;
+
+    if(l.name === currentBackground) {
+      option.selected = "selected";
+    }
+
+    dropdown.appendChild(option);
+  });
   dropdown.onchange = (evt) => {
     map.removeLayer("background");
     map.addLayer(makeBackgroundLayer(evt.target.value), "existing-casing");
