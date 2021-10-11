@@ -7,6 +7,12 @@ if(retina) {
 
 const layers = [
   {
+    label: "Positron",
+    name: "positron",
+    url: `https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}${r}.png`,
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="http://carto.com">Catro</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
+  },
+  {
     label: "Outdoor",
     name: "outdoor",
     url: `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}${r}.png?apikey=a09616e6150b4c0fa635a23efcda2af8`,
@@ -29,12 +35,6 @@ const layers = [
     name: "cyclosm",
     url: "https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png",
     attribution: 'Map tiles by <a target="_top" rel="noopener" href="https://cyclosm.com">CyclOSM</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
-  },
-  {
-    label: "Positron",
-    name: "positron",
-    url: `https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}${r}.png`,
-    attribution: 'Map tiles by <a target="_top" rel="noopener" href="http://carto.com">Catro</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   },
   {
     label: "Atlas",
@@ -63,7 +63,7 @@ layers.forEach((config) => {
 
 
 const url = new URL(window.location);
-const currentBackground = url.searchParams.get('background') || "outdoor";
+const currentBackground = url.searchParams.get('background') || "positron";
 
 const makeBackgroundLayer = (name) => {
   return {
