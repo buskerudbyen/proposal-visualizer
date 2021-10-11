@@ -85,8 +85,8 @@ var map = new maplibregl.Map({
     ]
   },
   hash: true,
-  center: [10.4051, 59.6153],
-  zoom: 15
+  center: [10.1968, 59.7448],
+  zoom: 11
 });
 
 map.on('load', function () {
