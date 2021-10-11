@@ -11,10 +11,6 @@
       - python3-dev
       - pip
 
-- name: Install mbutil
-  pip:
-    name: mbutil
-
 - name: Create data directory
   file:
     path: "{{ tilemaker_dir }}"

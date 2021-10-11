@@ -2,7 +2,7 @@
 Description=Run podman prune daily
 
 [Timer]
-OnCalendar=*-*-* 06:30:00
+OnCalendar=weekly
 Persistent=true
 
 [Install]

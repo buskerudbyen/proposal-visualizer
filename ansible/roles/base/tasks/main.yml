@@ -9,7 +9,6 @@
       - autojump
       - ripgrep
       - zsh
-      - fish
       - unzip
       - tar
       - uidmap
