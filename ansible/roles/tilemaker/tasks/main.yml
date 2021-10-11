@@ -20,15 +20,15 @@
     mode: 0775
 
 - name: Install config and script files
-  template: src={{ item }} dest=/var/tilemaker/
+  template:
+    src: "{{ item }}"
+    dest: /var/tilemaker/
+    mode: a+x
   with_items:
     - build-mbtiles
-  notify: Restart tilemaker
+    - compute-cycleway-length
 
-- name: Make script executable
-  file:
-    dest: /var/tilemaker/build-mbtiles
-    mode: a+x
+  notify: Restart tilemaker
 
 - name: Install systemd files
   template: src={{ item }} dest=/etc/systemd/system/
