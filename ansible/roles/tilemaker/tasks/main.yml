@@ -26,9 +26,15 @@
     mode: a+x
   with_items:
     - build-mbtiles
-    - compute-cycleway-length
-
   notify: Restart tilemaker
+
+- name: Install length calculation
+  template:
+    src: "{{ item }}"
+    dest: /var/tilemaker/
+  with_items:
+    - cycleway_length.py
+    - cycleway_length.wsgi
 
 - name: Install systemd files
   template: src={{ item }} dest=/etc/systemd/system/

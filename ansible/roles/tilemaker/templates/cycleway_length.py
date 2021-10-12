@@ -30,8 +30,6 @@ def distance():
     # set 'locations' to true.
     h.apply_file(PROPOSED_FILE, locations=True)
 
-    print('Total way length: %.2f km' % (h.length/1000))
-
     return h.length
 
 if __name__ == '__main__':

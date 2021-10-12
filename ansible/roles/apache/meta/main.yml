@@ -1,4 +1,3 @@
 ---
 dependencies:
-  - role: geerlingguy.firewall
-  - role: dev-sec.ssh-hardening
+  - role: tilemaker

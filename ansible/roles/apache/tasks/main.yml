@@ -4,6 +4,7 @@
     name:
       - apache2
       - libapache2-mod-md
+      - libapache2-mod-wsgi-py3
     state: present
 
 - name: Delete content & directory
@@ -35,6 +36,7 @@
     - http2
     - rewrite
     - md
+    - wsgi
   notify: Restart apache
 
 - name: Install apache config
