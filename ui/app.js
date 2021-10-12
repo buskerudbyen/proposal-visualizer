@@ -10,7 +10,7 @@ const layers = [
     label: "Positron",
     name: "positron",
     url: `https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}${r}.png`,
-    attribution: 'Map tiles by <a target="_top" rel="noopener" href="http://carto.com">Catro</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
+    attribution: 'Map tiles by <a target="_top" rel="noopener" href="http://carto.com">Carto</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
   },
   {
     label: "Outdoor",
