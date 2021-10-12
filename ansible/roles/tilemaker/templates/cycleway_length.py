@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import osmium as o
 import sys, os
 
@@ -8,17 +8,31 @@ FILENAME=os.environ.get("PBF_FILE", "/var/tilemaker/norway-filtered.pbf")
 
 @app.route('/')
 def get_distances():
-    return distance()
+    max_lat = request.args.get('maxLat')
+    max_lon = request.args.get('maxLon')
+
+    min_lat = request.args.get('minLat')
+    min_lon = request.args.get('minLon')
+
+    return distance(max_lat, max_lon, min_lat, min_lon)
 
 
 class RoadLengthHandler(o.SimpleHandler):
-    def __init__(self):
+    def __init__(self, max_lat, max_lon, min_lat, min_lon):
         super(RoadLengthHandler, self).__init__()
+
         self.proposed_length = 0.0
         self.existing_length = 0.0
 
+        self.max_lat = float(max_lat)
+        self.max_lon = float(max_lon)
+        self.min_lat = float(min_lat)
+        self.min_lon = float(min_lon)
+
     def way(self, w):
-        if w.tags.get("buskerudbyen:cycleway") == "existing":
+        if not self.check_if_inside(w):
+            pass
+        elif w.tags.get("buskerudbyen:cycleway") == "existing" :
             try:
                 self.existing_length += o.geom.haversine_distance(w.nodes)
             except o.InvalidLocationError:
@@ -34,12 +48,22 @@ class RoadLengthHandler(o.SimpleHandler):
                 # where nodes of ways near the boundary are missing.
                 print("WARNING: way %d incomplete. Ignoring." % w.id)
 
+    def check_if_inside(self, way):
+        if(self.max_lat is None or self.max_lon is None or self.min_lat is None or self.min_lon is None):
+            return True
+        else:
+            for i in way.nodes:
+                print(i.lon)
+                if(i.lon < self.max_lon and i.lon > self.min_lon and i.lat < self.max_lat and i.lat > self.min_lat):
+                    return True
+            return False
 
+def distance(max_lat, max_lon, min_lat, min_lon):
+    h = RoadLengthHandler(max_lat, max_lon, min_lat, min_lon)
 
-def distance():
-    h = RoadLengthHandler()
     # As we need the geometry, the node locations need to be cached. Therefore
     # set 'locations' to true.
+
     h.apply_file(FILENAME, locations=True)
 
     return {
