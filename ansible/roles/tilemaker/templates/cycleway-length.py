@@ -1,11 +1,14 @@
-#! /usr/bin/env python3
-
-"""
-Compute the total length of highways in an osm file.
-Shows how to extract the geometry of a way.
-"""
+from flask import Flask
 import osmium as o
 import sys
+app = Flask(__name__)
+
+PROPOSED_FILE="/tmp/buskerudbyen/cycleway-proposed.pbf"
+
+@app.route('/')
+def hello_world():
+    return { "proposed": distance() }
+
 
 class RoadLengthHandler(o.SimpleHandler):
     def __init__(self):
@@ -21,19 +24,15 @@ class RoadLengthHandler(o.SimpleHandler):
                 # where nodes of ways near the boundary are missing.
                 print("WARNING: way %d incomplete. Ignoring." % w.id)
 
-def main(osmfile):
+def distance():
     h = RoadLengthHandler()
     # As we need the geometry, the node locations need to be cached. Therefore
     # set 'locations' to true.
-    h.apply_file(osmfile, locations=True)
+    h.apply_file(PROPOSED_FILE, locations=True)
 
     print('Total way length: %.2f km' % (h.length/1000))
 
-    return 0
+    return h.length
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: python %s <osmfile>" % sys.argv[0])
-        sys.exit(-1)
-
-    exit(main(sys.argv[1]))
+   app.run()
