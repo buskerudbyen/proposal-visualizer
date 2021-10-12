@@ -24,10 +24,16 @@ class RoadLengthHandler(o.SimpleHandler):
         self.proposed_length = 0.0
         self.existing_length = 0.0
 
-        self.max_lat = float(max_lat)
-        self.max_lon = float(max_lon)
-        self.min_lat = float(min_lat)
-        self.min_lon = float(min_lon)
+        self.max_lat = self.to_float(max_lat)
+        self.max_lon = self.to_float(max_lon)
+        self.min_lat = self.to_float(min_lat)
+        self.min_lon = self.to_float(min_lon)
+
+    def to_float(self, value):
+        if value is None:
+            return None
+        else:
+            return float(value)
 
     def way(self, w):
         if not self.check_if_inside(w):
@@ -53,7 +59,6 @@ class RoadLengthHandler(o.SimpleHandler):
             return True
         else:
             for i in way.nodes:
-                print(i.lon)
                 if(i.lon < self.max_lon and i.lon > self.min_lon and i.lat < self.max_lat and i.lat > self.min_lat):
                     return True
             return False

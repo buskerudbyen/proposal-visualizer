@@ -246,5 +246,23 @@ map.on('load', function () {
     window.history.pushState({}, '', url);
   };
 
+  map.on('zoomend', function() {
+
+    const bounds = map.getBounds();
+    const params = {
+      maxLat: bounds.getNorth(),
+      minLat: bounds.getSouth(),
+      maxLon: bounds.getEast(),
+      minLon: bounds.getWest()
+    };
+
+    console.log(params)
+    const searchParams = new URLSearchParams(params);
+
+    fetch(`https://byvekstavtale.leonard.io/cycleway-length?${searchParams.toString()}`)
+      .then(response => response.json())
+      .then(data => console.log(data));
+
+  });
 });
 
