@@ -89,6 +89,28 @@ var map = new maplibregl.Map({
   zoom: 11
 });
 
+const computeLengthFromCurrentViewport = () => {
+  const bounds = map.getBounds();
+  const params = {
+    maxLat: bounds.getNorth(),
+    minLat: bounds.getSouth(),
+    maxLon: bounds.getEast(),
+    minLon: bounds.getWest()
+  };
+
+  const searchParams = new URLSearchParams(params);
+
+  fetch(`https://byvekstavtale.leonard.io/cycleway-length/?${searchParams.toString()}`)
+    .then(response => response.json())
+    .then(data => {
+      Object.keys(data).forEach(key => {
+        const value = data[key];
+        document.getElementById(key).textContent = (value / 1000).toFixed(2);
+      })
+    });
+
+}
+
 map.on('load', function () {
   map.addSource('tippecanoe', {
     'type': 'vector',
@@ -238,6 +260,7 @@ map.on('load', function () {
 
     dropdown.appendChild(option);
   });
+
   dropdown.onchange = (evt) => {
     map.removeLayer("background");
     map.addLayer(makeBackgroundLayer(evt.target.value), "existing-casing");
@@ -246,23 +269,8 @@ map.on('load', function () {
     window.history.pushState({}, '', url);
   };
 
-  map.on('zoomend', function() {
-
-    const bounds = map.getBounds();
-    const params = {
-      maxLat: bounds.getNorth(),
-      minLat: bounds.getSouth(),
-      maxLon: bounds.getEast(),
-      minLon: bounds.getWest()
-    };
-
-    console.log(params)
-    const searchParams = new URLSearchParams(params);
-
-    fetch(`https://byvekstavtale.leonard.io/cycleway-length?${searchParams.toString()}`)
-      .then(response => response.json())
-      .then(data => console.log(data));
-
-  });
+  map.on('zoomend', computeLengthFromCurrentViewport);
+  map.on('dragend', computeLengthFromCurrentViewport);
+  computeLengthFromCurrentViewport();
 });
 
