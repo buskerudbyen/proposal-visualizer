@@ -24,6 +24,12 @@
     dest: /var/www/html/tiles
     state: link
 
+- name: Install apache config
+  template:
+    src: site.conf
+    dest: "/etc/apache2/sites-enabled/{{ domain_name }}.conf"
+  notify: Restart apache
+
 - name: Enable the Apache2 modules
   community.general.apache2_module:
     state: present
@@ -39,9 +45,4 @@
     - wsgi
   notify: Restart apache
 
-- name: Install apache config
-  template:
-    src: site.conf
-    dest: "/etc/apache2/sites-enabled/{{ domain_name }}.conf"
-  notify: Restart apache
 

@@ -9,6 +9,7 @@
       - curl
       - build-essential
       - python3-dev
+      - python3-flask
       - pip
 
 - name: Create data directory
@@ -35,6 +36,7 @@
   with_items:
     - cycleway_length.py
     - cycleway_length.wsgi
+  notify: Restart apache
 
 - name: Install systemd files
   template: src={{ item }} dest=/etc/systemd/system/
