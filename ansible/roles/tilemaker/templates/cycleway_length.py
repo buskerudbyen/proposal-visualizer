@@ -71,9 +71,9 @@ def distance(max_lat, max_lon, min_lat, min_lon):
 
     h.apply_file(FILENAME, locations=True)
 
-    proposed = round(h.proposed_length / 1000, 2)
-    existing = round(h.existing_length / 1000, 2)
-    total = round(proposed + existing, 2)
+    proposed = round(h.proposed_length / 1000, 1)
+    existing = round(h.existing_length / 1000, 1)
+    total = round(proposed + existing, 1)
 
     return {
         "proposed": proposed,
