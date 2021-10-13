@@ -6,6 +6,7 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.js"></script>
     <link href="https://unpkg.com/maplibre-gl@1.15.2/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js" integrity="sha256-qXBd/EfAdjOA2FGrGAG+b3YBn2tn5A6bhz+LSgYD96k=" crossorigin="anonymous"></script>
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
@@ -16,13 +17,13 @@
           <h4>Connected cycle infrastructure</h4>
 
           <div>
-            <input type="radio" id="all" name="length-mode" value="all" checked>
-            <label for="all">All of Buskerudbyen</label>
+            <input type="radio" id="viewport" name="length-mode" value="viewport" checked>
+            <label for="viewport">Current map view</label>
           </div>
 
           <div>
-            <input type="radio" id="viewport" name="length-mode" value="viewport">
-            <label for="viewport">Current map view</label>
+            <input type="radio" id="all" name="length-mode" value="all">
+            <label for="all">All of Buskerudbyen</label>
           </div>
 
           <table class="demo">
