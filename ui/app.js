@@ -86,8 +86,11 @@ var map = new maplibregl.Map({
   },
   hash: true,
   center: [10.1968, 59.7448],
-  zoom: 11
+  zoom: 11,
+  dragRotate: false,
+  touchPitch: false
 });
+map.touchZoomRotate.disableRotation();
 
 const computeLengthFromCurrentViewport = () => {
   const radios = document.querySelectorAll('input[type=radio][name="length-mode"]:checked');
