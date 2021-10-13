@@ -286,8 +286,8 @@ map.on('load', function () {
     r.onchange = computeLengthFromCurrentViewport;
   });
 
-  map.on('zoomend', computeLengthFromCurrentViewport);
-  map.on('dragend', computeLengthFromCurrentViewport);
+  map.on('zoomend', _.debounce(computeLengthFromCurrentViewport, 100));
+  map.on('dragend', _.debounce(computeLengthFromCurrentViewport, 100));
   computeLengthFromCurrentViewport();
 });
 
