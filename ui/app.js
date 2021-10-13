@@ -105,7 +105,7 @@ const computeLengthFromCurrentViewport = () => {
     .then(data => {
       Object.keys(data).forEach(key => {
         const value = data[key];
-        document.getElementById(key).textContent = (value / 1000).toFixed(2);
+        document.getElementById(key).textContent = value;
       })
     });
 

@@ -71,10 +71,14 @@ def distance(max_lat, max_lon, min_lat, min_lon):
 
     h.apply_file(FILENAME, locations=True)
 
+    proposed = round(h.proposed_length / 1000, 2)
+    existing = round(h.existing_length / 1000, 2)
+    total = round(proposed + existing, 2)
+
     return {
-        "proposed": h.proposed_length,
-        "existing": h.existing_length,
-        "total": h.proposed_length + h.existing_length
+        "proposed": proposed,
+        "existing": existing,
+        "total": total
     }
 
 if __name__ == '__main__':
