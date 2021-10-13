@@ -90,15 +90,26 @@ var map = new maplibregl.Map({
 });
 
 const computeLengthFromCurrentViewport = () => {
-  const bounds = map.getBounds();
-  const params = {
-    maxLat: bounds.getNorth(),
-    minLat: bounds.getSouth(),
-    maxLon: bounds.getEast(),
-    minLon: bounds.getWest()
-  };
+  const radios = document.querySelectorAll('input[type=radio][name="length-mode"]:checked');
+  const lengthMode = radios[0].value;
 
-  const searchParams = new URLSearchParams(params);
+  // by default we get the entire Buskerudbyen
+  let searchParams = new URLSearchParams();
+
+  // or we want to get the length statistics for the current map view
+  if(lengthMode == "viewport"){
+    const bounds = map.getBounds();
+    const params = {
+      maxLat: bounds.getNorth(),
+      minLat: bounds.getSouth(),
+      maxLon: bounds.getEast(),
+      minLon: bounds.getWest()
+    };
+
+    searchParams = new URLSearchParams(params);
+  }
+
+
 
   fetch(`https://byvekstavtale.leonard.io/cycleway-length/?${searchParams.toString()}`)
     .then(response => response.json())
@@ -268,6 +279,12 @@ map.on('load', function () {
     url.searchParams.set('background', evt.target.value);
     window.history.pushState({}, '', url);
   };
+
+
+  const radios = document.querySelectorAll('input[type=radio][name="length-mode"]');
+  radios.forEach(r => {
+    r.onchange = computeLengthFromCurrentViewport;
+  });
 
   map.on('zoomend', computeLengthFromCurrentViewport);
   map.on('dragend', computeLengthFromCurrentViewport);

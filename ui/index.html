@@ -14,7 +14,17 @@
       <div class="map-overlay-inner">
         <div id="length">
           <h4>Connected cycle infrastructure</h4>
-          <em>In current map view</em>
+
+          <div>
+            <input type="radio" id="all" name="length-mode" value="all" checked>
+            <label for="all">All of Buskerudbyen</label>
+          </div>
+
+          <div>
+            <input type="radio" id="viewport" name="length-mode" value="viewport">
+            <label for="viewport">Current map view</label>
+          </div>
+
           <table class="demo">
             <tbody>
               <tr>
