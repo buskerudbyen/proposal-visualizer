@@ -92,6 +92,8 @@ var map = new maplibregl.Map({
 });
 map.touchZoomRotate.disableRotation();
 
+const formatNumber = (n) => String(n).replaceAll(".", ",");
+
 const computeLengthFromCurrentViewport = () => {
   const radios = document.querySelectorAll('input[type=radio][name="length-mode"]:checked');
   const lengthMode = radios[0].value;
@@ -119,7 +121,7 @@ const computeLengthFromCurrentViewport = () => {
     .then(data => {
       Object.keys(data).forEach(key => {
         const value = data[key];
-        document.getElementById(key).textContent = value;
+        document.getElementById(key).textContent = formatNumber(value);
       })
     });
 
