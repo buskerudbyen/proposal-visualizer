@@ -37,5 +37,5 @@ podman run --rm \
       tilemaker/cycleway-existing.geojson \
       tilemaker/cycleway-proposed.geojson
 
-send-to-matrix "tilemaker successful"
+#send-to-matrix "tilemaker successful"
 
