@@ -91,6 +91,8 @@ var map = new maplibregl.Map({
   touchPitch: false
 });
 map.touchZoomRotate.disableRotation();
+const nav = new maplibregl.NavigationControl({ showCompass: false });
+map.addControl(nav, 'top-right');
 
 const formatNumber = (n) => String(n).replaceAll(".", ",");
 
