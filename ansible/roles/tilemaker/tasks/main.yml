@@ -29,6 +29,14 @@
     - build-mbtiles
   notify: Restart tilemaker
 
+- name: Install
+  template:
+    src: "{{ item }}"
+    dest: /var/tilemaker/
+  with_items:
+    - buskerudbyen-and-around.geojson
+  notify: Restart tilemaker
+
 - name: Install length calculation
   template:
     src: "{{ item }}"
@@ -39,7 +47,7 @@
   notify: Restart apache
 
 - name: Install systemd files
-  template: src={{ item }} dest=/etc/systemd/system/
+  template: src=systemd/{{ item }} dest=/etc/systemd/system/
   with_items:
     - tilemaker.service
     - tilemaker.timer

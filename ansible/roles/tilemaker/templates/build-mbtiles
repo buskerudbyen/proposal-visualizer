@@ -24,6 +24,10 @@ do
   osmium export cycleway-$i.pbf -o cycleway-$i.geojson --overwrite
 done
 
+osmium extract norway.osm.pbf --polygon buskerudbyen-and-around.geojson -o buskerudbyen-and-around.osm.pbf
+osmium tags-filter buskerudbyen-and-around.osm.pbf nw/railway=station -o railway-stations.osm.pbf -f pbf --overwrite
+osmium export railway-stations.osm.pbf -o railway-stations.geojson --overwrite
+
 # build tiles with tippecanoe
 podman run --rm \
   --log-driver=journald \
@@ -35,7 +39,8 @@ podman run --rm \
       --no-tile-compression \
       --force \
       tilemaker/cycleway-existing.geojson \
-      tilemaker/cycleway-proposed.geojson
+      tilemaker/cycleway-proposed.geojson \
+      tilemaker/railway-stations.geojson
 
 #send-to-matrix "tilemaker successful"
 
