@@ -25,8 +25,9 @@ do
 done
 
 osmium extract norway.osm.pbf --polygon buskerudbyen-and-around.geojson -o buskerudbyen-and-around.osm.pbf --overwrite
-osmium tags-filter buskerudbyen-and-around.osm.pbf nw/railway=station -o railway-stations.osm.pbf -f pbf --overwrite
-osmium export railway-stations.osm.pbf -o railway-stations.geojson --overwrite
+# extract all railway stations + liebyen and svelvik
+osmium tags-filter buskerudbyen-and-around.osm.pbf nw/railway=station n/wikidata=Q12004287 n/wikidata=Q2072812 -o place.osm.pbf -f pbf --overwrite
+osmium export place.osm.pbf -o place.geojson --overwrite
 
 # build tiles with tippecanoe
 podman run --rm \
@@ -40,7 +41,7 @@ podman run --rm \
       --force \
       tilemaker/cycleway-existing.geojson \
       tilemaker/cycleway-proposed.geojson \
-      tilemaker/railway-stations.geojson
+      tilemaker/place.geojson
 
 #send-to-matrix "tilemaker successful"
 
