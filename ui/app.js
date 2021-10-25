@@ -264,6 +264,33 @@ map.on('load', function () {
     }
   });
 
+  map.addLayer({
+    "id": "place",
+    "type": "circle",
+    "source": "tippecanoe",
+    'source-layer': 'place',
+    "layout": {
+    },
+    "paint": {
+      "circle-radius": {
+        "base": 1,
+        "stops": [
+          [
+            9,
+            2
+          ],
+          [
+            24,
+            26
+          ]
+        ]
+      },
+      "circle-color": "#f73109",
+      "circle-opacity": 0.9
+    }
+  });
+
+
   const dropdown = document.getElementById("layer");
 
   layers.forEach(l => {
