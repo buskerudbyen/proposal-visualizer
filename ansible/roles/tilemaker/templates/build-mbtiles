@@ -35,6 +35,7 @@ podman run --rm \
   --entrypoint tippecanoe \
   -v /var/tilemaker:/tilemaker:z \
     docker.io/morlov/tippecanoe \
+      -zg \
       --output-to-directory=tilemaker/tiles/ \
       --no-tile-compression \
       --force \
