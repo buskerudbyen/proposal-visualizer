@@ -273,15 +273,15 @@ map.on('load', function () {
     },
     "paint": {
       "circle-radius": {
-        "base": 1,
+        "base": 1.1,
         "stops": [
           [
-            9,
-            2
+            6,
+            1
           ],
           [
-            24,
-            26
+            17,
+            17
           ]
         ]
       },
