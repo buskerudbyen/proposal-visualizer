@@ -15,7 +15,7 @@ fi
 
 osmium tags-filter $PBF_FILE w/buskerudbyen:cycleway -o norway-filtered.pbf -f pbf --overwrite
 
-styles=("existing" "proposed")
+styles=("existing" "proposed" "external")
 
 for i in "${styles[@]}"
 do
@@ -41,6 +41,7 @@ podman run --rm \
       --force \
       tilemaker/cycleway-existing.geojson \
       tilemaker/cycleway-proposed.geojson \
+      tilemaker/cycleway-external.geojson \
       tilemaker/place.geojson
 
 #send-to-matrix "tilemaker successful"

@@ -36,9 +36,10 @@ class RoadLengthHandler(o.SimpleHandler):
             return float(value)
 
     def way(self, w):
+        value = w.tags.get("buskerudbyen:cycleway")
         if not self.check_if_inside(w):
             pass
-        elif w.tags.get("buskerudbyen:cycleway") == "existing" :
+        elif value == "existing" or value == "external":
             try:
                 self.existing_length += o.geom.haversine_distance(w.nodes)
             except o.InvalidLocationError:
@@ -46,7 +47,7 @@ class RoadLengthHandler(o.SimpleHandler):
                 # where nodes of ways near the boundary are missing.
                 print("WARNING: way %d incomplete. Ignoring." % w.id)
 
-        elif w.tags.get("buskerudbyen:cycleway") == "proposed":
+        elif value == "proposed":
             try:
                 self.proposed_length += o.geom.haversine_distance(w.nodes)
             except o.InvalidLocationError:
