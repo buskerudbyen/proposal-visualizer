@@ -265,6 +265,36 @@ map.on('load', function () {
   });
 
   map.addLayer({
+    'id': 'cycleway-external',
+    'type': 'line',
+    'source': 'tippecanoe',
+    'source-layer': 'cyclewayexternal',
+    'layout': {
+      'line-cap': 'round',
+      'line-join': 'round'
+    },
+    'paint': {
+      'line-opacity': 1,
+      'line-color': '#7d8384',
+      "line-width": {
+        "base": 0.9,
+        "stops": [
+          [
+            11,
+            1
+          ],
+          [
+            20,
+            6
+          ]
+        ]
+      }
+    }
+  });
+
+
+
+  map.addLayer({
     "id": "place",
     "type": "circle",
     "source": "tippecanoe",
