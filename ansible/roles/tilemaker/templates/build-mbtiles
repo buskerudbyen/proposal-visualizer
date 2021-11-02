@@ -36,6 +36,7 @@ podman run --rm \
   -v /var/tilemaker:/tilemaker:z \
     docker.io/morlov/tippecanoe \
       -z20 \
+      --no-progress-indicator \
       --output-to-directory=tilemaker/tiles/ \
       --no-tile-compression \
       --force \
