@@ -8,7 +8,7 @@ StartLimitBurst=1
 [Service]
 Environment=HOME=/root
 WorkingDirectory=/var/tilemaker
-ExecStart=/var/tilemaker/build-mbtiles
+ExecStart=/var/tilemaker/build-tiles
 Restart=on-failure
 
 ExecStopPost=systemd-failure-notification "tilemaker"
