@@ -20,10 +20,12 @@ styles=("existing" "proposed" "external")
 for i in "${styles[@]}"
 do
    :
+  echo "Extracting OSM features for cycleway=${i}"
   osmium tags-filter norway-filtered.pbf w/buskerudbyen:cycleway=$i -o cycleway-$i.pbf -f pbf --overwrite
   osmium export cycleway-$i.pbf -o cycleway-$i.geojson --overwrite
 done
 
+echo "Extracting OSM features railway stations and places"
 osmium extract norway.osm.pbf --polygon buskerudbyen-and-around.geojson -o buskerudbyen-and-around.osm.pbf --overwrite
 # extract all railway stations + liebyen and svelvik
 osmium tags-filter buskerudbyen-and-around.osm.pbf nw/railway=station n/wikidata=Q12004287 n/wikidata=Q2072812 -o place.osm.pbf -f pbf --overwrite
@@ -37,13 +39,31 @@ podman run --rm \
     docker.io/morlov/tippecanoe \
       -z20 \
       --no-progress-indicator \
-      --output-to-directory=tilemaker/tiles/ \
+      --output-to-directory=tilemaker/tiles/byvekstavtale/ \
       --no-tile-compression \
       --force \
       tilemaker/cycleway-existing.geojson \
       tilemaker/cycleway-proposed.geojson \
       tilemaker/cycleway-external.geojson \
       tilemaker/place.geojson
+
+# build cycle infrastructure
+
+echo "Extracting OSM features for bicycle parking lots"
+osmium tags-filter norway.osm.pbf nwr/amenity=bicycle_parking -o bicycle-parking.osm.pbf -f pbf --overwrite
+osmium export bicycle-parking.osm.pbf -o bicycle-parking.geojson --overwrite
+
+podman run --rm \
+  --log-driver=journald \
+  --entrypoint tippecanoe \
+  -v /var/tilemaker:/tilemaker:z \
+    docker.io/morlov/tippecanoe \
+      -z20 \
+      --no-progress-indicator \
+      --output-to-directory=tilemaker/tiles/bicycle-parking/ \
+      --no-tile-compression \
+      --force \
+      tilemaker/bicycle-parking.geojson
 
 #send-to-matrix "tilemaker successful"
 
