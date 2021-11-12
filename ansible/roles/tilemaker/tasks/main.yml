@@ -29,12 +29,14 @@
     - build-tiles
   notify: Restart tilemaker
 
-- name: Install
+- name: Install config
   template:
     src: "{{ item }}"
     dest: /var/tilemaker/
   with_items:
     - buskerudbyen-and-around.geojson
+    - process-openmaptiles.lua
+    - config-openmaptiles.json
   notify: Restart tilemaker
 
 - name: Install length calculation

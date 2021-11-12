@@ -13,6 +13,25 @@ else
   curl --fail --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 fi
 
+echo "Extracting OSM features for bicycle parking lots"
+#osmium tags-filter norway.osm.pbf nwr/amenity=bicycle_parking -o bicycle-parking.osm.pbf -f pbf --overwrite
+#osmium export bicycle-parking.osm.pbf -o bicycle-parking.geojson --overwrite
+
+# build tiles with tilemaker
+echo "Building tile with tilemaker"
+podman run \
+  -v /var/tilemaker/:/srv:z \
+  --name tilemaker \
+  --rm \
+  --cpu-shares 512 \
+  docker.io/stadtnavi/tilemaker:2f617ccb1aa49ecda2685a4721361a479f0b6b81 \
+  /srv/${PBF_FILE} \
+  --output=/srv/tiles/bicycle-parking/  \
+  --config=/srv/config-openmaptiles.json \
+  --process=/srv/process-openmaptiles.lua \
+
+
+echo "Extracting cycleways"
 osmium tags-filter $PBF_FILE w/buskerudbyen:cycleway -o norway-filtered.pbf -f pbf --overwrite
 
 styles=("existing" "proposed" "external")
@@ -25,7 +44,7 @@ do
   osmium export cycleway-$i.pbf -o cycleway-$i.geojson --overwrite
 done
 
-echo "Extracting OSM features railway stations and places"
+echo "Extracting OSM features for railway stations and places"
 osmium extract norway.osm.pbf --polygon buskerudbyen-and-around.geojson -o buskerudbyen-and-around.osm.pbf --overwrite
 # extract all railway stations + liebyen and svelvik
 osmium tags-filter buskerudbyen-and-around.osm.pbf nw/railway=station n/wikidata=Q12004287 n/wikidata=Q2072812 -o place.osm.pbf -f pbf --overwrite
@@ -48,22 +67,6 @@ podman run --rm \
       tilemaker/place.geojson
 
 # build cycle infrastructure
-
-echo "Extracting OSM features for bicycle parking lots"
-osmium tags-filter norway.osm.pbf nwr/amenity=bicycle_parking -o bicycle-parking.osm.pbf -f pbf --overwrite
-osmium export bicycle-parking.osm.pbf -o bicycle-parking.geojson --overwrite
-
-podman run --rm \
-  --log-driver=journald \
-  --entrypoint tippecanoe \
-  -v /var/tilemaker:/tilemaker:z \
-    docker.io/morlov/tippecanoe \
-      -z20 \
-      --no-progress-indicator \
-      --output-to-directory=tilemaker/tiles/bicycle-parking/ \
-      --no-tile-compression \
-      --force \
-      tilemaker/bicycle-parking.geojson
 
 #send-to-matrix "tilemaker successful"
 
