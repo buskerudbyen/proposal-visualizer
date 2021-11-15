@@ -33,17 +33,23 @@ function way_function(way)
 end
 
 function details(i)
-  if i:Find("covered")=="yes" then
-    i:Attribute("class", "bicycle_covered")
 
-  elseif i:Find("bicycle_parking")=="shed" then
+  if i:Find("access")=="customers" and i:Find("fee")=="yes" and i:Holds("operator") and i:Find("operator"):startswith("Bane") then
     i:Attribute("class", "bicycle_shed")
 
   elseif i:Find("bicycle_parking")=="lockers" then
     i:Attribute("class", "bicycle_locker")
+
+  elseif i:Find("covered")=="yes" then
+    i:Attribute("class", "bicycle_covered")
 
   else
     i:Attribute("class", "bicycle_parking")
   end
 
 end
+
+function string:startswith(start)
+  return self:sub(1, #start) == start
+end
+
