@@ -47,7 +47,22 @@ function details(i)
     i:Attribute("class", "bicycle_parking")
   end
 
+  add_access(i)
+
 end
+
+function add_access(i)
+
+  local access = i:Find("access")
+
+  if access=="private" or access=="customers" or access=="no" then
+    i:Attribute("access", "private")
+  else
+    i:Attribute("access", "public")
+  end
+
+end
+
 
 function string:startswith(start)
   return self:sub(1, #start) == start
