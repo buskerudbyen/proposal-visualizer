@@ -35,30 +35,29 @@ end
 function details(i)
 
   if i:Find("access")=="customers" and i:Find("fee")=="yes" and i:Holds("operator") and i:Find("operator"):startswith("Bane") then
-    i:Attribute("class", "bicycle_shed")
+    i:Attribute("class", "bicycle_shed_public")
 
   elseif i:Find("bicycle_parking")=="lockers" then
-    i:Attribute("class", "bicycle_locker")
+    add_access(i, "bicycle_locker")
 
   elseif i:Find("covered")=="yes" then
-    i:Attribute("class", "bicycle_covered")
+    add_access(i, "bicycle_covered")
 
   else
-    i:Attribute("class", "bicycle_parking")
+    add_access(i, "bicycle_parking")
   end
 
-  add_access(i)
 
 end
 
-function add_access(i)
+function add_access(i, base)
 
   local access = i:Find("access")
 
   if access=="private" or access=="customers" or access=="no" then
-    i:Attribute("access", "private")
+    i:Attribute("class", base .. "_private")
   else
-    i:Attribute("access", "public")
+    i:Attribute("class", base .. "_public")
   end
 
 end
