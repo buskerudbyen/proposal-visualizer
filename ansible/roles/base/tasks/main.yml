@@ -44,7 +44,12 @@
     shell: /bin/bash
     append: yes
   with_items: "{{ users }}"
-
+  
+- name: Set authorized keys taken from url
+  ansible.posix.authorized_key:
+    user: lenni
+    state: present
+    key: https://github.com/leonardehrenfried.keys
 
 - name: Install systemd files for podman-prune
   template: src={{ item }} dest=/etc/systemd/system/
