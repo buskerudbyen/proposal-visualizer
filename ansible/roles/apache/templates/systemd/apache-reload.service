@@ -1,0 +1,10 @@
+[Unit]
+Description=Reload apache
+
+[Service]
+ExecStart=systemctl reload apache2.service
+
+ExecStopPost=systemd-failure-notification "apache-reload"
+
+[Install]
+WantedBy=multi-user.target
