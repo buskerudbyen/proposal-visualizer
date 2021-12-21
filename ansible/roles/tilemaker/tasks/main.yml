@@ -11,6 +11,7 @@
       - python3-dev
       - python3-flask
       - pip
+      - unzip
 
 - name: Create data directory
   file:
