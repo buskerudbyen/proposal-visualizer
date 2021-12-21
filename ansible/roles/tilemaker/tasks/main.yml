@@ -27,6 +27,7 @@
     mode: a+x
   with_items:
     - build-tiles
+    - build-map
   notify: Restart tilemaker
 
 - name: Install config
@@ -38,6 +39,14 @@
     - process-openmaptiles.lua
     - config-openmaptiles.json
   notify: Restart tilemaker
+
+- name: Install bicycle style config
+  template:
+    src: "{{ item }}"
+    dest: /var/tilemaker/bicycle/
+  with_items:
+    - bicycle/process-openmaptiles.lua
+    - bicycle/config-openmaptiles.json
 
 - name: Install length calculation
   template:
@@ -53,6 +62,7 @@
   with_items:
     - tilemaker.service
     - tilemaker.timer
+    - tilemaker-map.service
   notify: Restart tilemaker
 
 - name: Start tilemaker.timer

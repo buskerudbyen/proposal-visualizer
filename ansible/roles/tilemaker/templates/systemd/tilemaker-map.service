@@ -1,0 +1,17 @@
+[Unit]
+Description=Build mbtiles
+
+# Restart once times within 20 minutes so that an intermittent network failures are gracefully handled
+StartLimitIntervalSec=1200
+StartLimitBurst=1
+
+[Service]
+Environment=HOME=/root
+WorkingDirectory=/var/tilemaker
+ExecStart=/var/tilemaker/build-map
+Restart=on-failure
+
+ExecStopPost=systemd-failure-notification "tilemaker-map"
+
+[Install]
+WantedBy=multi-user.target

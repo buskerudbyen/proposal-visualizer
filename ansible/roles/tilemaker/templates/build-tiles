@@ -18,7 +18,7 @@ echo "Extracting OSM features for bicycle parking lots"
 #osmium export bicycle-parking.osm.pbf -o bicycle-parking.geojson --overwrite
 
 # build tiles with tilemaker
-echo "Building tile with tilemaker"
+echo "Buildings tile with tilemaker"
 podman run \
   -v /var/tilemaker/:/srv:z \
   --name tilemaker \

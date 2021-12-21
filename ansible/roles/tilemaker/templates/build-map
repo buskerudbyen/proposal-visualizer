@@ -1,0 +1,30 @@
+#! /usr/bin/env bash
+
+set -e
+
+PBF_DOWNLOAD_URL={{ pbf_download_url }}
+PBF_FILE=norway.osm.pbf
+
+if [ -f "$PBF_FILE" ]; then
+  echo "$PBF_FILE exists. Downloading updates."
+  pyosmium-up-to-date -v $PBF_FILE
+else
+  echo "$PBF_FILE does not exist."
+  curl --fail --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
+fi
+
+echo "Buildings tiles with tilemaker"
+podman run \
+  -v /var/tilemaker/:/srv:z \
+  --name tilemaker-map \
+  --rm \
+  --cpu-shares 512 \
+  docker.io/stadtnavi/tilemaker:2f617ccb1aa49ecda2685a4721361a479f0b6b81 \
+  /srv/${PBF_FILE} \
+  --output=/srv/tiles/bicycle/v1/  \
+  --config=/srv/bicycle/config-openmaptiles.json \
+  --process=/srv/bicycle/process-openmaptiles.lua \
+  --store=/root/store \
+
+send-to-matrix "tilemaker-map successful"
+
