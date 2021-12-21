@@ -63,9 +63,15 @@
   with_items:
     - tilemaker.service
     - tilemaker.timer
+  notify: Restart tilemaker
+
+- name: Install systemd files
+  template: src=systemd/{{ item }} dest=/etc/systemd/system/
+  with_items:
     - tilemaker-map.service
     - tilemaker-map.timer
-  notify: Restart tilemaker
+  notify: Restart tilemaker-map
+
 
 - name: Start timers
   systemd:

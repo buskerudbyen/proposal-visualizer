@@ -3,3 +3,8 @@
   service:
     name: tilemaker
     state: restarted
+
+- name: Restart tilemaker-map
+  service:
+    name: tilemaker-map
+    state: restarted
