@@ -48,6 +48,7 @@
   with_items:
     - bicycle/process-openmaptiles.lua
     - bicycle/config-openmaptiles.json
+  notify: Restart tilemaker-map
 
 - name: Install length calculation
   template:
