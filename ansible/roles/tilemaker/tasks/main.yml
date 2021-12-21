@@ -15,11 +15,14 @@
 
 - name: Create data directory
   file:
-    path: "{{ tilemaker_dir }}"
+    path: "{{ item }}"
     state: directory
     owner: root
     group: root
     mode: 0775
+  with_items:
+    - "{{tilemaker_dir}}"
+    - "{{tilemaker_dir}}/fonts"
 
 - name: Install config and script files
   template:
@@ -49,6 +52,23 @@
     - bicycle/process-openmaptiles.lua
     - bicycle/config-openmaptiles.json
   notify: Restart tilemaker-map
+
+- name: Download and unzip fonts
+  ansible.builtin.unarchive:
+    src: https://github.com/klokantech/klokantech-gl-fonts/archive/refs/tags/v1.0.0.zip
+    dest: /var/tilemaker/
+    remote_src: yes
+    creates: /var/tilemaker/klokantech-gl-fonts-1.0.0
+
+- name: Symlink fonts
+  ansible.builtin.file:
+    dest: "/var/tilemaker/klokantech-gl-fonts-1.0.0/{{item}}"
+    src: "KlokanTech {{ item }}"
+    state: link
+  with_items:
+    - "Noto Sans Regular"
+    - "Noto Sans Bold"
+    - "Noto Sans Italic"
 
 - name: Install length calculation
   template:

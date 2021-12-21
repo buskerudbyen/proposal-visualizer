@@ -32,8 +32,14 @@ if [ ! -d "${OCEAN_SHAPEFILE_FINAL_FOLDER}" ]; then
   rm ${OCEAN_SHAPEFILE_ZIP}
 fi
 
+ln -sf ../${OCEAN_SHAPEFILE_FINAL_FOLDER} bicycle/coastline
+
+podman stop tilemaker-map || true
+
 echo "Buildings tiles with tilemaker"
 podman run \
+  -it \
+  -v /var/tilemaker/coastline:/coastline:z \
   -v /var/tilemaker/:/srv:z \
   --name tilemaker-map \
   --rm \

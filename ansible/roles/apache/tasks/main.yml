@@ -24,6 +24,12 @@
     dest: /var/www/html/tiles
     state: link
 
+- name: Create a symbolic link for fonts
+  ansible.builtin.file:
+    src: /var/tilemaker/klokantech-gl-fonts-1.0.0
+    dest: /var/www/html/fonts
+    state: link
+
 - name: Install apache config
   template:
     src: site.conf
