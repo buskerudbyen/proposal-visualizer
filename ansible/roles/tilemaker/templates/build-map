@@ -35,6 +35,7 @@ fi
 ln -sf ../${OCEAN_SHAPEFILE_FINAL_FOLDER} bicycle/coastline
 
 podman stop tilemaker-map || true
+podman rm tilemaker-map || true
 
 echo "Buildings tiles with tilemaker"
 podman run \
