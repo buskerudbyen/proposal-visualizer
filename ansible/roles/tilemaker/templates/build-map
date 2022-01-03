@@ -10,6 +10,8 @@ OCEAN_SHAPEFILE_FOLDER=water-polygons-split-4326
 OCEAN_SHAPEFILE_ZIP=${OCEAN_SHAPEFILE_FOLDER}.zip
 OCEAN_SHAPEFILE_FINAL_FOLDER=coastline
 
+LANDCOVER_FOLDER=landcover
+
 if [ -f "$PBF_FILE" ]; then
   echo "$PBF_FILE exists. Downloading updates."
   pyosmium-up-to-date -v $PBF_FILE
@@ -32,7 +34,29 @@ if [ ! -d "${OCEAN_SHAPEFILE_FINAL_FOLDER}" ]; then
   rm ${OCEAN_SHAPEFILE_ZIP}
 fi
 
-ln -sf ../${OCEAN_SHAPEFILE_FINAL_FOLDER} bicycle/coastline
+if [ ! -d "${LANDCOVER_FOLDER}" ]; then
+  mkdir -p landcover/ne_10m_urban_areas
+  cd landcover/ne_10m_urban_areas
+  wget https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_urban_areas.zip
+  unzip -o ne_10m_urban_areas.zip
+  rm -rf ne_10m_urban_areas.zip
+
+  cd ..
+  mkdir -p ne_10m_antarctic_ice_shelves_polys
+
+  cd ne_10m_antarctic_ice_shelves_polys
+  wget https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/physical/ne_10m_antarctic_ice_shelves_polys.zip
+  unzip -o ne_10m_antarctic_ice_shelves_polys.zip
+  rm -rf ne_10m_antarctic_ice_shelves_polys.zip
+
+  cd ..
+  mkdir -p ne_10m_glaciated_areas
+
+  cd ne_10m_glaciated_areas
+  wget https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/physical/ne_10m_glaciated_areas.zip
+  unzip -o ne_10m_glaciated_areas.zip
+  rm -rf ne_10m_glaciated_areas.zip
+fi
 
 podman stop tilemaker-map || true
 podman rm tilemaker-map || true
@@ -41,6 +65,7 @@ echo "Buildings tiles with tilemaker"
 podman run \
   -it \
   -v /var/tilemaker/coastline:/coastline:z \
+  -v /var/tilemaker/landcover:/landcover:z \
   -v /var/tilemaker/:/srv:z \
   --name tilemaker-map \
   --rm \
