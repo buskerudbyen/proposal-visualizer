@@ -394,7 +394,7 @@
       "filter": [
         "all",
         ["==", "class", "bicycle_route"],
-        ["==", "network", "national"]
+        ["==", "network", "local"]
       ],
       "layout": {"line-join": "round", "visibility": "visible"},
       "minzoom": 14,
