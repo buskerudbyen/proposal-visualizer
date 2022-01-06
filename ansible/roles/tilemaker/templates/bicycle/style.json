@@ -387,6 +387,18 @@
       }
     },
     {
+      "id": "bicycle-route",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["all", ["in", "class", "bicycle_route"]],
+      "layout": {"line-join": "round", "visibility": "visible"},
+      "paint": {
+        "line-color": "rgba(165, 254, 216, 1)",
+        "line-width":  9
+      }
+    },
+    {
       "id": "tunnel-service-track-casing",
       "type": "line",
       "metadata": {"mapbox:group": "1444849354174.1904"},
@@ -1637,18 +1649,7 @@
         "line-width": {"base": 1, "stops": [[11, 3], [19, 5.5]]}
       }
     },
-    {
-      "id": "bicycle-route",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "filter": ["all", ["in", "class", "bicycle_route"]],
-      "layout": {"line-join": "round", "visibility": "visible"},
-      "paint": {
-        "line-color": "rgba(93, 239, 105, 0.8)",
-        "line-width":  4
-      }
-    },
+
     {
       "id": "bicycle-lane",
       "type": "line",
