@@ -225,7 +225,7 @@ function relation_function(relation)
 
 		local networks = {
 			["lcn"] = "local",
-			["rcn"] = "regional",
+			["rcn"] = "local",
 			["ncn"] = "national"
 		}
 
