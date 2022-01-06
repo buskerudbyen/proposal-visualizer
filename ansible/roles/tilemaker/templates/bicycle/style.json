@@ -1650,6 +1650,19 @@
       }
     },
     {
+      "id": "bicycle-lane",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 14,
+      "filter": ["==", "cycleway", 1],
+      "layout": {"line-join": "round", "visibility": "visible"},
+      "paint": {
+        "line-color": "#069b15",
+        "line-width": 2
+      }
+    },
+    {
       "id": "boundary-land-level-4",
       "type": "line",
       "source": "openmaptiles",

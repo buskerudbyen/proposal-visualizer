@@ -347,6 +347,7 @@ function way_function(way)
 			SetBrunnelAttributes(way)
 			if ramp then way:AttributeNumeric("ramp",1) end
 
+
 			-- Service
 			if highway == "service" and service ~="" then way:Attribute("service", service) end
 
@@ -356,6 +357,10 @@ function way_function(way)
 			end
 			if oneway == "-1" then
 				-- **** TODO
+			end
+
+			if way:Holds("cycleway") or highway == "cycleway"  then
+				way:AttributeNumeric("cycleway", 1)
 			end
 
 			-- Write names
