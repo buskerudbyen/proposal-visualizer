@@ -334,7 +334,7 @@
       "source": "openmaptiles",
       "source-layer": "water",
       "filter": ["all"],
-      "layout": {"visibility": "visible"},
+      "layout": {"visibility": "none"},
       "paint": {"fill-pattern": "wave", "fill-translate": [0, 2.5]}
     },
     {
