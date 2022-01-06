@@ -387,11 +387,15 @@
       }
     },
     {
-      "id": "bicycle-route-background",
+      "id": "bicycle-route-local-background",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "filter": ["all", ["in", "class", "bicycle_route"]],
+      "filter": [
+        "all",
+        ["==", "class", "bicycle_route"],
+        ["==", "network", "national"]
+      ],
       "layout": {"line-join": "round", "visibility": "visible"},
       "minzoom": 14,
       "paint": {
@@ -399,7 +403,23 @@
         "line-width":  9
       }
     },
-
+    {
+      "id": "bicycle-route-national-background",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "class", "bicycle_route"],
+        ["==", "network", "national"]
+      ],
+      "layout": {"line-join": "round", "visibility": "visible"},
+      "minzoom": 14,
+      "paint": {
+        "line-color": "rgba(190, 165, 254, 1)",
+        "line-width":  12
+      }
+    },
     {
       "id": "tunnel-service-track-casing",
       "type": "line",
