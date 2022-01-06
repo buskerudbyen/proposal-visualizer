@@ -20,7 +20,7 @@ tilemaker/drammen.osm.pbf: tilemaker/norway.osm.pbf
 
 tilemaker: tilemaker/drammen.osm.pbf
 	cp ansible/roles/tilemaker/templates/bicycle/* tilemaker
-	jq '. | .settings.filemetadata.tiles=["http://localhost:8123/tiles/"]' tilemaker/config-openmaptiles.json > tilemaker/temp.json
+	jq '. | .settings.filemetadata.tiles=["http://localhost:8123/{z}/{x}/{y}.pbf"]' tilemaker/config-openmaptiles.json > tilemaker/temp.json
 	mv tilemaker/temp.json tilemaker/config-openmaptiles.json
 
 	podman run \
@@ -33,6 +33,9 @@ tilemaker: tilemaker/drammen.osm.pbf
 		--output=/srv/tiles/  \
 		--config=/srv/config-openmaptiles.json \
 		--process=/srv/process-openmaptiles.lua
+
+	cp ansible/roles/tilemaker/templates/bicycle/index.html tilemaker/tiles
+	jq '. | .sources.openmaptiles.url="http://localhost:8123/metadata.json"' ansible/roles/tilemaker/templates/bicycle/style.json > tilemaker/tiles/style.json
 
 	python3 -m http.server 8123 --directory tilemaker/tiles/
 
