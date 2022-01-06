@@ -220,8 +220,13 @@ function relation_function(relation)
 		relation:Layer("transportation", false)
 		relation:Attribute("class", "bicycle_route")
 		relation:Attribute("ref", relation:Find("ref"))
-		relation:Attribute("name", relation:Find("name"))
 
+		local ref = relation:Find("ref")
+		if ref~="" then
+			relation:Attribute("ref",ref)
+			relation:AttributeNumeric("ref_length", ref:len())
+		end
+		relation:Attribute("name", relation:Find("name"))
 
 		local networks = {
 			["lcn"] = "local",

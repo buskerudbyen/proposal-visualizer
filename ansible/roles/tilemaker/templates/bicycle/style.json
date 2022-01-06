@@ -1720,6 +1720,32 @@
       }
     },
     {
+      "id": "bicycle-route-shield",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 8,
+      "filter": [
+        "all",
+        ["==", "class", "bicycle_route"],
+        ["==", "network", "national"],
+        ["==", "$type", "LineString"]
+      ],
+      "layout": {
+        "icon-image": "road_6",
+        "icon-rotation-alignment": "viewport",
+        "icon-size": 1,
+        "symbol-placement": {"base": 1, "stops": [[10, "point"], [11, "line"]]},
+        "symbol-spacing": 200,
+        "text-field": "{ref}",
+        "text-font": ["Noto Sans Regular"],
+        "text-rotation-alignment": "viewport",
+        "text-size": 10,
+        "visibility": "none"
+      },
+      "paint": {}
+    },
+    {
       "id": "boundary-land-level-4",
       "type": "line",
       "source": "openmaptiles",
