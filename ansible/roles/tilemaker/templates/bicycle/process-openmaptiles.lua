@@ -203,6 +203,15 @@ poiKeys         = Set { "amenity", "sport", "tourism", "office", "historic", "le
 waterClasses    = Set { "river", "riverbank", "stream", "canal", "drain", "ditch", "dock" }
 waterwayClasses = Set { "stream", "river", "canal", "drain", "ditch" }
 
+-- Scan relations for use in ways
+
+function relation_scan_function(relation)
+	if relation:Find("type")=="boundary" and relation:Find("boundary")=="administrative" then
+		relation:Accept()
+	end
+end
+
+-- Process way tags
 
 function way_function(way)
 	local route    = way:Find("route")
@@ -236,24 +245,41 @@ function way_function(way)
 	if landuse == "field" then landuse = "farmland" end
 	if landuse == "meadow" and way:Find("meadow")=="agricultural" then landuse="farmland" end
 
-	-- Boundaries
-	if boundary~="" then
-		local admin_level = tonumber(way:Find("admin_level")) or 11
+	-- Boundaries within relations
+	local admin_level = 11
+	local isBoundary = false
+	while true do
+		local rel = way:NextRelation()
+		if not rel then break end
+		isBoundary = true
+		admin_level = math.min(admin_level, tonumber(way:FindInRelation("admin_level")) or 11)
+	end
+
+	-- Boundaries in ways
+	if boundary=="administrative" then
+		admin_level = math.min(admin_level, tonumber(way:Find("admin_level")) or 11)
+		isBoundary = true
+	end
+
+	-- Administrative boundaries
+	-- https://openmaptiles.org/schema/#boundary
+	if isBoundary and not (way:Find("maritime")=="yes") then
 		local mz = 0
 		if     admin_level>=3 and admin_level<5 then mz=4
 		elseif admin_level>=5 and admin_level<7 then mz=8
 		elseif admin_level==7 then mz=10
 		elseif admin_level>=8 then mz=12
 		end
-		if boundary~="" and way:Find("disputed")=="yes" then
-			-- disputed boundaries
-			way:Layer("boundary",false)
+
+		way:Layer("boundary",false)
+		way:AttributeNumeric("admin_level", admin_level)
+		way:MinZoom(mz)
+		-- disputed status (0 or 1). some styles need to have the 0 to show it.
+		local disputed = way:Find("disputed")
+		if disputed=="yes" then
 			way:AttributeNumeric("disputed", 1)
-		elseif boundary=="administrative" and not (way:Find("maritime")=="yes") then
-			-- administrative boundaries
-			way:Layer("boundary",false)
-			way:AttributeNumeric("admin_level", admin_level)
-			way:MinZoom(mz)
+		else
+			way:AttributeNumeric("disputed", 0)
 		end
 	end
 
@@ -552,7 +578,7 @@ function SetNameAttributes(obj)
 	local name = obj:Find("name"), iname
 	local main_written = name
 	-- if we have a preferred language, then write that (if available), and additionally write the base name tag
-	if preferred_language and obj:Holds("name:"..preferred_language) then 
+	if preferred_language and obj:Holds("name:"..preferred_language) then
 		iname = obj:Find("name:"..preferred_language)
 		obj:Attribute(preferred_language_attribute, iname)
 		if iname~=name and default_language_attribute then
@@ -703,3 +729,4 @@ function split(inputstr, sep) -- https://stackoverflow.com/a/7615129/4288232
 	return t
 end
 
+-- vim: tabstop=2 shiftwidth=2 noexpandtab
