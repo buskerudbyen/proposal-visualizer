@@ -56,7 +56,7 @@
 - name: Install style.json and example HTML
   template:
     src: "{{ item }}"
-    dest: /var/tilemaker/tiles/bicycle/v1/
+    dest: "{{tilemaker_dir}}/tiles/bicycle/v1/"
   with_items:
     - bicycle/style.json
     - bicycle/index.html
