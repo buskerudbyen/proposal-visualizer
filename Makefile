@@ -28,7 +28,7 @@ tilemaker: tilemaker/drammen.osm.pbf
 		-v $(PWD)/tilemaker/:/srv:z \
 		--name tilemaker-map \
 		--rm \
-		docker.io/stadtnavi/tilemaker:2f617ccb1aa49ecda2685a4721361a479f0b6b81 \
+		docker.io/stadtnavi/tilemaker:a3c70afb7685cb642da8424eba9863ca37bbc32c\
 		/srv/drammen.osm.pbf \
 		--output=/srv/tiles/  \
 		--config=/srv/config-openmaptiles.json \

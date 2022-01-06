@@ -22,7 +22,7 @@
     mode: 0775
   with_items:
     - "{{tilemaker_dir}}"
-    - "{{tilemaker_dir}}/fonts"
+    - "{{tilemaker_dir}}/tiles/bicycle/v1"
 
 - name: Install config and script files
   template:
@@ -52,6 +52,13 @@
     - bicycle/process-openmaptiles.lua
     - bicycle/config-openmaptiles.json
   notify: Restart tilemaker-map
+
+- name: Install style.json and example HTML
+  template:
+    src: "{{ item }}"
+    dest: /var/tilemaker/tiles/bicycle/v1/
+  with_items:
+    - bicycle/style.json
 
 - name: Download and unzip fonts
   ansible.builtin.unarchive:
