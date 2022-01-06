@@ -209,8 +209,21 @@ function relation_scan_function(relation)
 	if relation:Find("type")=="boundary" and relation:Find("boundary")=="administrative" then
 		relation:Accept()
 	end
+	if relation:Find("type")=="route" and relation:Find("route")=="bicycle" then
+		local network = relation:Find("network")
+		relation:Accept()
+	end
 end
 
+
+function relation_function(relation)
+	if relation:Find("type")=="route" and relation:Find("route")=="bicycle" then
+		relation:Layer("transportation",false)
+		relation:Attribute("class", "bicycle_route")
+		relation:MinZoom(0)
+		relation:ZOrder(100)
+	end
+end
 -- Process way tags
 
 function way_function(way)
@@ -422,16 +435,16 @@ function way_function(way)
 
 	-- 'aerodrome_label'
 	if aeroway=="aerodrome" then
-	 	way:LayerAsCentroid("aerodrome_label")
-	 	SetNameAttributes(way)
-	 	way:Attribute("iata", way:Find("iata"))
-  		SetEleAttributes(way)
- 	 	way:Attribute("icao", way:Find("icao"))
+		way:LayerAsCentroid("aerodrome_label")
+		SetNameAttributes(way)
+		way:Attribute("iata", way:Find("iata"))
+			SetEleAttributes(way)
+		way:Attribute("icao", way:Find("icao"))
 
- 	 	local aerodrome = way:Find(aeroway)
- 	 	local class
- 	 	if aerodromeValues[aerodrome] then class = aerodrome else class = "other" end
- 	 	way:Attribute("class", class)
+		local aerodrome = way:Find(aeroway)
+		local class
+		if aerodromeValues[aerodrome] then class = aerodrome else class = "other" end
+		way:Attribute("class", class)
 	end
 
 	-- Set 'waterway' and associated

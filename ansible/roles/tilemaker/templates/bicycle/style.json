@@ -360,6 +360,7 @@
       "layout": {"visibility": "visible"},
       "paint": {"fill-color": "rgba(245, 238, 188, 1)", "fill-opacity": 1}
     },
+
     {
       "id": "building",
       "type": "fill",
@@ -700,6 +701,7 @@
         "line-width": 1.1
       }
     },
+
     {
       "id": "aeroway-taxiway-casing",
       "type": "line",
@@ -1633,6 +1635,18 @@
         "line-color": "hsl(0, 0%, 70%)",
         "line-dasharray": [2, 3],
         "line-width": {"base": 1, "stops": [[11, 3], [19, 5.5]]}
+      }
+    },
+    {
+      "id": "bicycle-route",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["all", ["in", "class", "bicycle_route"]],
+      "layout": {"line-join": "round", "visibility": "visible"},
+      "paint": {
+        "line-color": "rgba(93, 239, 105, 0.8)",
+        "line-width":  4
       }
     },
     {
