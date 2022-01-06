@@ -210,7 +210,6 @@ function relation_scan_function(relation)
 		relation:Accept()
 	end
 	if relation:Find("type")=="route" and relation:Find("route")=="bicycle" then
-		local network = relation:Find("network")
 		relation:Accept()
 	end
 end
@@ -218,10 +217,23 @@ end
 
 function relation_function(relation)
 	if relation:Find("type")=="route" and relation:Find("route")=="bicycle" then
-		relation:Layer("transportation",false)
+		relation:Layer("transportation", false)
 		relation:Attribute("class", "bicycle_route")
-		relation:MinZoom(0)
-		relation:ZOrder(100)
+		relation:Attribute("ref", relation:Find("ref"))
+		relation:Attribute("name", relation:Find("name"))
+
+
+		local networks = {
+			["lcn"] = "local",
+			["rcn"] = "regional",
+			["ncn"] = "national"
+		}
+
+		local network = relation:Find("network")
+		local n = networks[network]
+		if n~=nil then
+			relation:Attribute("network", n)
+		end
 	end
 end
 -- Process way tags

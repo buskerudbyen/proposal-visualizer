@@ -387,17 +387,19 @@
       }
     },
     {
-      "id": "bicycle-route",
+      "id": "bicycle-route-background",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
       "filter": ["all", ["in", "class", "bicycle_route"]],
       "layout": {"line-join": "round", "visibility": "visible"},
+      "minzoom": 14,
       "paint": {
         "line-color": "rgba(165, 254, 216, 1)",
         "line-width":  9
       }
     },
+
     {
       "id": "tunnel-service-track-casing",
       "type": "line",
@@ -1649,7 +1651,6 @@
         "line-width": {"base": 1, "stops": [[11, 3], [19, 5.5]]}
       }
     },
-
     {
       "id": "bicycle-lane",
       "type": "line",
@@ -1661,6 +1662,19 @@
       "paint": {
         "line-color": "#069b15",
         "line-width": 2
+      }
+    },
+    {
+      "id": "bicycle-route-overlay",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["==", "class", "bicycle_route"],
+      "layout": {"line-join": "round", "visibility": "visible"},
+      "maxzoom": 14,
+      "paint": {
+        "line-color": "#34978b",
+        "line-width":  3
       }
     },
     {
