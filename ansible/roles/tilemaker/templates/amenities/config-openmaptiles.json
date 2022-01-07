@@ -1,7 +1,7 @@
 {
   "layers": {
-    "bicycle_parking":  { "minzoom":  8,  "maxzoom": 20, "simplify_below": 12, "simplify_level": 0.0003, "simplify_ratio": 2 },
-    "bicycle_repair":  { "minzoom":  8,  "maxzoom": 20, "simplify_below": 12, "simplify_level": 0.0003, "simplify_ratio": 2 }
+    "bicycle_parking": { "minzoom": 13, "maxzoom": 20, "simplify_below": 12, "simplify_level": 0.0003, "simplify_ratio": 2 },
+    "bicycle_repair": { "minzoom": 13, "maxzoom": 20, "simplify_below": 12, "simplify_level": 0.0003, "simplify_ratio": 2 }
   },
   "settings": {
     "minzoom": 0,

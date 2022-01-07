@@ -26,10 +26,9 @@ podman run \
   --cpu-shares 512 \
   docker.io/stadtnavi/tilemaker:2f617ccb1aa49ecda2685a4721361a479f0b6b81 \
   /srv/${PBF_FILE} \
-  --output=/srv/tiles/bicycle-parking/  \
+  --output=/srv/tiles/bicycle-amenities/  \
   --config=/srv/config-openmaptiles.json \
   --process=/srv/process-openmaptiles.lua \
-
 
 echo "Extracting cycleways"
 osmium tags-filter $PBF_FILE w/buskerudbyen:cycleway -o norway-filtered.pbf -f pbf --overwrite
