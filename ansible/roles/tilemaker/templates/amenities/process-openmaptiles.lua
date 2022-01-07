@@ -22,7 +22,7 @@ function node_function(node)
   end
 
   if amenity=="bicycle_repair_station" then
-    node:Layer("bicycle_repair_station", false)
+    node:Layer("bicycle_repair", false)
   end
 
 end
