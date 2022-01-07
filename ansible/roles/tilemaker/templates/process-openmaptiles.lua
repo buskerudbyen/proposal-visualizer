@@ -18,8 +18,13 @@ function node_function(node)
   local amenity = node:Find("amenity")
   if amenity=="bicycle_parking" then
     node:Layer("bicycle_parking", false)
-    details(node)
+    add_parking_details(node)
   end
+
+  if amenity=="bicycle_repair_station" then
+    node:Layer("bicycle_repair_station", false)
+  end
+
 end
 
 -- Similarly for ways
@@ -28,11 +33,11 @@ function way_function(way)
   local amenity = way:Find("amenity")
   if amenity=="bicycle_parking" then
     way:LayerAsCentroid("bicycle_parking")
-    details(way)
+    add_parking_details(way)
   end
 end
 
-function details(i)
+function add_parking_details(i)
 
   if i:Find("access")=="customers" and i:Find("fee")=="yes" and i:Holds("operator") and i:Find("operator"):startswith("Bane") then
     i:Attribute("class", "bicycle_shed_public")
@@ -46,7 +51,6 @@ function details(i)
   else
     add_access(i, "bicycle_parking")
   end
-
 
 end
 
