@@ -376,7 +376,7 @@ function way_function(way)
 				-- **** TODO
 			end
 
-			local has_cycleway = way:Holds("cycleway") and way:Find("cycleway")~="no"
+			local has_cycleway = has_thruthy_tag(way, "cycleway") or has_thruthy_tag(way, "cycleway:left") or has_thruthy_tag(way, "cycleway:right")
 			if has_cycleway or highway == "cycleway" then
 				way:AttributeNumeric("cycleway", 1)
 			end
@@ -594,6 +594,12 @@ function attribute_function(attr,layer)
 		return { class="ocean" }
 	end
 end
+
+function has_thruthy_tag(item, tag)
+	return item:Holds(tag) and item:Find(tag)~="no"
+end
+
+
 
 -- ==========================================================
 -- Common functions
