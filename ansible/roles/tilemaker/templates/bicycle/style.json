@@ -2135,60 +2135,6 @@
       }
     },
     {
-      "id": "bicycle-route-name-local",
-      "type": "symbol",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "minzoom": 14,
-      "filter": [
-        "all",
-        ["==", "class", "bicycle_route"],
-        ["==", "network", "local"]
-      ],
-      "layout": {
-        "symbol-placement": "line",
-        "symbol-spacing":	400,
-        "text-field": "{name}",
-        "text-font": ["Noto Sans Regular"],
-        "text-rotation-alignment": "map",
-        "text-size": {"base": 1, "stops": [[13, 9], [14, 11]]},
-        "text-offset": [0, 1.2]
-      },
-      "paint": {
-        "text-color": "#2f8a65",
-        "text-halo-blur": 0.5,
-        "text-halo-width": 1,
-        "text-halo-color" :	"#fff"
-      }
-    },
-    {
-      "id": "bicycle-route-name-national",
-      "type": "symbol",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "minzoom": 12,
-      "filter": [
-        "all",
-        ["==", "class", "bicycle_route"],
-        ["==", "network", "national"]
-      ],
-      "layout": {
-        "symbol-placement": "line",
-        "symbol-spacing":	400,
-        "text-field": "{name}",
-        "text-font": ["Noto Sans Regular"],
-        "text-rotation-alignment": "map",
-        "text-size": {"base": 1, "stops": [[13, 9], [14, 11]]},
-        "text-offset": [0, 1.2]
-      },
-      "paint": {
-        "text-color": "#7141e5",
-        "text-halo-blur": 0.5,
-        "text-halo-width": 1,
-        "text-halo-color" :	"#fff"
-      }
-    },
-    {
       "id": "highway-name-minor",
       "type": "symbol",
       "source": "openmaptiles",
@@ -2312,6 +2258,60 @@
         "text-size": 10
       },
       "paint": {"text-color": "rgba(0, 0, 0, 1)"}
+    },
+    {
+      "id": "bicycle-route-name-local",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 14,
+      "filter": [
+        "all",
+        ["==", "class", "bicycle_route"],
+        ["==", "network", "local"]
+      ],
+      "layout": {
+        "symbol-placement": "line",
+        "symbol-spacing":	400,
+        "text-field": "{name}",
+        "text-font": ["Noto Sans Regular"],
+        "text-rotation-alignment": "map",
+        "text-size": {"base": 1, "stops": [[13, 9], [14, 11]]},
+        "text-offset": [0, 1.2]
+      },
+      "paint": {
+        "text-color": "#2f8a65",
+        "text-halo-blur": 0.5,
+        "text-halo-width": 1,
+        "text-halo-color" :	"#fff"
+      }
+    },
+    {
+      "id": "bicycle-route-name-national",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        ["==", "class", "bicycle_route"],
+        ["==", "network", "national"]
+      ],
+      "layout": {
+        "symbol-placement": "line",
+        "symbol-spacing":	400,
+        "text-field": "{name}",
+        "text-font": ["Noto Sans Regular"],
+        "text-rotation-alignment": "map",
+        "text-size": {"base": 1, "stops": [[13, 9], [14, 11]]},
+        "text-offset": [0, 1.2]
+      },
+      "paint": {
+        "text-color": "#7141e5",
+        "text-halo-blur": 0.5,
+        "text-halo-width": 1,
+        "text-halo-color" :	"#fff"
+      }
     },
     {
       "id": "airport-label-major",
