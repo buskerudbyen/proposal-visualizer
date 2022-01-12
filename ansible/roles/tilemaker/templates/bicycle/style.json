@@ -2126,7 +2126,7 @@
         "text-field": "{name:latin} {name:nonlatin}",
         "text-font": ["Noto Sans Regular"],
         "text-rotation-alignment": "map",
-        "text-size": {"base": 1, "stops": [[13, 12], [14, 13]]}
+        "text-size": {"base": 1, "stops": [[13, 10], [14, 11]]}
       },
       "paint": {
         "text-color": "hsl(30, 23%, 62%)",
@@ -2204,10 +2204,11 @@
         "text-field": "{name:latin} {name:nonlatin}",
         "text-font": ["Noto Sans Regular"],
         "text-rotation-alignment": "map",
-        "text-size": {"base": 1, "stops": [[13, 12], [14, 13]]}
+        "text-size": {"base": 1, "stops": [[13, 10], [14, 11]]}
       },
       "paint": {
         "text-color": "#765",
+        "text-halo-color": "#fff",
         "text-halo-blur": 0.5,
         "text-halo-width": 1
       }
@@ -2227,6 +2228,7 @@
         "text-size": {"base": 1, "stops": [[13, 12], [14, 13]]}
       },
       "paint": {
+        "text-halo-color": "#fff",
         "text-color": "#765",
         "text-halo-blur": 0.5,
         "text-halo-width": 1
