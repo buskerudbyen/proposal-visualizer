@@ -16,7 +16,7 @@ tilemaker/norway.osm.pbf:
 	curl --create-dirs --fail https://download.geofabrik.de/europe/norway-latest.osm.pbf -o $@
 
 tilemaker/drammen.osm.pbf: tilemaker/norway.osm.pbf
-	osmium extract tilemaker/norway.osm.pbf --polygon ansible/roles/tilemaker/templates/buskerudbyen-and-around.geojson -o $@
+	osmium extract tilemaker/norway.osm.pbf --polygon ansible/roles/tilemaker/templates/buskerudbyen-and-around.geojson -o $@ --overwrite
 
 tilemaker: tilemaker/drammen.osm.pbf icons
 	cp ansible/roles/tilemaker/templates/bicycle/* tilemaker
