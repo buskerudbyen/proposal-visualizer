@@ -78,6 +78,16 @@
     - "Noto Sans Bold"
     - "Noto Sans Italic"
 
+- name: Copy sprites
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /var/tilemaker/tiles/bicycle/{{ bicycle_tiles_version }}/
+  with_items:
+    - sprite@2x.png
+    - sprite@2x.json
+    - sprite.png
+    - sprite.json
+
 - name: Install length calculation
   template:
     src: "{{ item }}"

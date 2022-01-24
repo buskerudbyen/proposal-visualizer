@@ -72,7 +72,7 @@ podman run \
   --cpu-shares 512 \
   docker.io/stadtnavi/tilemaker:a3c70afb7685cb642da8424eba9863ca37bbc32c \
   /srv/${PBF_FILE} \
-  --output=/srv/tiles/bicycle/v1/  \
+  --output=/srv/tiles/bicycle/{{ bicycle_tiles_version }}/  \
   --config=/srv/bicycle/config-openmaptiles.json \
   --process=/srv/bicycle/process-openmaptiles.lua \
   --store=/root/store \

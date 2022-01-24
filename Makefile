@@ -2,7 +2,7 @@ SHELL := /bin/bash
 DEST := /var/www/html/
 DATE := $(shell date "+%Y%m%d%H%M%S")
 
-.PHONY: ansible tilemaker
+.PHONY: ansible tilemaker icons
 
 deploy:
 	rsync -rC \
@@ -39,3 +39,7 @@ tilemaker: tilemaker/drammen.osm.pbf
 
 	python3 -m http.server 8123 --directory tilemaker/tiles/
 
+
+icons:
+	spritezero ansible/roles/tilemaker/files/sprite icons
+	spritezero --retina ansible/roles/tilemaker/files/sprite@2x icons
