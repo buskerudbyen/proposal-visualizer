@@ -125,6 +125,13 @@
     "x": 51,
     "y": 55
   },
+  "bicycle_repair_station_11": {
+    "height": 15,
+    "pixelRatio": 1,
+    "width": 15,
+    "x": 183,
+    "y": 38
+  },
   "bus_11": {
     "height": 17,
     "pixelRatio": 1,
@@ -507,35 +514,35 @@
     "height": 14,
     "pixelRatio": 1,
     "width": 14,
-    "x": 183,
+    "x": 198,
     "y": 38
   },
   "road_2": {
     "height": 14,
     "pixelRatio": 1,
     "width": 20,
-    "x": 197,
+    "x": 212,
     "y": 38
   },
   "road_3": {
     "height": 14,
     "pixelRatio": 1,
     "width": 25,
-    "x": 217,
+    "x": 232,
     "y": 38
   },
   "road_4": {
     "height": 14,
     "pixelRatio": 1,
     "width": 31,
-    "x": 242,
+    "x": 257,
     "y": 38
   },
   "road_5": {
     "height": 14,
     "pixelRatio": 1,
     "width": 36,
-    "x": 273,
+    "x": 288,
     "y": 38
   },
   "road_6": {
@@ -675,35 +682,35 @@
     "height": 14,
     "pixelRatio": 1,
     "width": 17,
-    "x": 309,
-    "y": 38
+    "x": 193,
+    "y": 55
   },
   "us-state_2": {
     "height": 14,
     "pixelRatio": 1,
     "width": 22,
-    "x": 193,
+    "x": 210,
     "y": 55
   },
   "us-state_3": {
     "height": 14,
     "pixelRatio": 1,
     "width": 27,
-    "x": 215,
+    "x": 232,
     "y": 55
   },
   "us-state_4": {
     "height": 14,
     "pixelRatio": 1,
     "width": 32,
-    "x": 242,
+    "x": 259,
     "y": 55
   },
   "us-state_5": {
     "height": 14,
     "pixelRatio": 1,
     "width": 37,
-    "x": 274,
+    "x": 291,
     "y": 55
   },
   "us-state_6": {
@@ -731,8 +738,8 @@
     "height": 8,
     "pixelRatio": 1,
     "width": 16,
-    "x": 311,
-    "y": 55
+    "x": 195,
+    "y": 72
   },
   "zoo_11": {
     "height": 17,
