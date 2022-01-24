@@ -615,18 +615,18 @@ function WritePOI(obj,class,subclass,rank)
 
 	if subclass=="bicycle_parking" then
 		local access = obj:Find("access")
-		if access=="private" or access=="customers" or access=="no" then
+
+		if obj:Find("access")=="customers" and obj:Find("fee")=="yes" and obj:Holds("operator") and obj:Find("operator"):startswith("Bane") then
+       obj:Attribute("type", "shed")
+		elseif obj:Find("bicycle_parking")=="lockers" then
+ 			obj:Attribute("type", "lockers")
+		elseif obj:Find("covered")=="yes" then
+			obj:Attribute("type", "covered")
+ 		end
+
+    if access=="private" or access=="customers" or access=="no" then
 			obj:AttributeNumeric("private", 1)
 		end
-
-		if obj:Find("covered")=="yes" then
-			obj:AttributeNumeric("covered", 1)
-		end
-
-    if obj:Find("access")=="customers" and obj:Find("fee")=="yes" and obj:Holds("operator") and obj:Find("operator"):startswith("Bane") then
-      obj:Attribute("type", "shed")
-    end
-
 	end
 end
 

@@ -2048,7 +2048,7 @@
       }
     },
     {
-      "id": "poi-bicycle-parking",
+      "id": "poi-bicycle-parking-public",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
@@ -2057,7 +2057,8 @@
         "all",
         ["==", "$type", "Point"],
         ["==", "subclass", "bicycle_parking"],
-        ["!=", "private", 0],
+        ["!=", "private", 1],
+        ["!has", "type"],
         ["any", ["!has", "level"], ["==", "level", 0]]
       ],
       "layout": {
@@ -2068,8 +2069,68 @@
         "text-max-width": 9,
         "text-offset": [0, 0.6],
         "text-padding": 2,
-        "text-size": 12,
-        "visibility": "none"
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "poi-bicycle-parking-private",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "subclass", "bicycle_parking"],
+        ["==", "private", 1],
+        ["!has", "type"],
+        ["any", ["!has", "level"], ["==", "level", 0]]
+      ],
+      "layout": {
+        "icon-image": "bicycle_parking_private_11",
+        "text-anchor": "top",
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-font": ["Noto Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-padding": 2,
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "poi-bicycle-parking-subtype",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "subclass", "bicycle_parking"],
+        ["has", "type"],
+        ["any", ["!has", "level"], ["==", "level", 0]]
+      ],
+      "layout": {
+        "icon-image": "bicycle_parking_{type}_11",
+        "text-anchor": "top",
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-font": ["Noto Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-padding": 2,
+        "text-size": 12
       },
       "paint": {
         "text-color": "#666",
@@ -2118,7 +2179,7 @@
       "filter": [
         "all",
         ["==", "$type", "Point"],
-        ["has", "name"],
+        ["has", "name:latin"],
         ["==", "class", "railway"],
         ["==", "subclass", "station"]
       ],
