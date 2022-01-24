@@ -34,8 +34,10 @@ tilemaker: tilemaker/drammen.osm.pbf
 		--config=/srv/config-openmaptiles.json \
 		--process=/srv/process-openmaptiles.lua
 
+	cp ansible/roles/tilemaker/files/* tilemaker/tiles
+
 	cp ansible/roles/tilemaker/templates/bicycle/index.html tilemaker/tiles
-	jq '. | .sources.openmaptiles.url="http://localhost:8123/metadata.json"' ansible/roles/tilemaker/templates/bicycle/style.json > tilemaker/tiles/style.json
+	jq '. | .sources.openmaptiles.url="http://localhost:8123/metadata.json" | .sprite="http://localhost:8123/sprite"' ansible/roles/tilemaker/templates/bicycle/style.json > tilemaker/tiles/style.json
 
 	python3 -m http.server 8123 --directory tilemaker/tiles/
 
