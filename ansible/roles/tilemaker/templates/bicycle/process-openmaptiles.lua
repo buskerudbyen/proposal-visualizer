@@ -623,6 +623,10 @@ function WritePOI(obj,class,subclass,rank)
 			obj:AttributeNumeric("covered", 1)
 		end
 
+    if obj:Find("access")=="customers" and obj:Find("fee")=="yes" and obj:Holds("operator") and obj:Find("operator"):startswith("Bane") then
+      obj:Attribute("type", "shed")
+    end
+
 	end
 end
 
@@ -781,5 +785,10 @@ function split(inputstr, sep) -- https://stackoverflow.com/a/7615129/4288232
 	end
 	return t
 end
+
+function string:startswith(start)
+  return self:sub(1, #start) == start
+end
+
 
 -- vim: tabstop=2 shiftwidth=2 noexpandtab

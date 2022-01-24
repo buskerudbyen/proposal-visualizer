@@ -18,7 +18,7 @@ tilemaker/norway.osm.pbf:
 tilemaker/drammen.osm.pbf: tilemaker/norway.osm.pbf
 	osmium extract tilemaker/norway.osm.pbf --polygon ansible/roles/tilemaker/templates/buskerudbyen-and-around.geojson -o $@
 
-tilemaker: tilemaker/drammen.osm.pbf
+tilemaker: tilemaker/drammen.osm.pbf icons
 	cp ansible/roles/tilemaker/templates/bicycle/* tilemaker
 	jq '. | .settings.filemetadata.tiles=["http://localhost:8123/{z}/{x}/{y}.pbf"]' tilemaker/config-openmaptiles.json > tilemaker/temp.json
 	mv tilemaker/temp.json tilemaker/config-openmaptiles.json
