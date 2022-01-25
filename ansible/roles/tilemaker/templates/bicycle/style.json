@@ -2140,7 +2140,7 @@
       }
     },
     {
-      "id": "poi-bicycle",
+      "id": "poi-bicycle-repair-station",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
@@ -2153,7 +2153,7 @@
         ["any", ["!has", "level"], ["==", "level", 0]]
       ],
       "layout": {
-        "icon-image": "{subclass}_11",
+        "icon-image": "bicycle_repair_station_11",
         "text-anchor": "top",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": ["Noto Sans Regular"],
