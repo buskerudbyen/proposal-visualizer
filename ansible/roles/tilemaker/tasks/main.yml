@@ -40,8 +40,6 @@
     dest: /var/tilemaker/
   with_items:
     - buskerudbyen-and-around.geojson
-    - amenities/process-openmaptiles.lua
-    - amenities/config-openmaptiles.json
   notify: Restart tilemaker
 
 - name: Install bicycle style config

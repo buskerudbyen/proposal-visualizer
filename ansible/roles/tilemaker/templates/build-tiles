@@ -13,23 +13,6 @@ else
   curl --fail --location -s "${PBF_DOWNLOAD_URL}" -o ${PBF_FILE}
 fi
 
-echo "Extracting OSM features for bicycle parking lots"
-#osmium tags-filter norway.osm.pbf nwr/amenity=bicycle_parking -o bicycle-parking.osm.pbf -f pbf --overwrite
-#osmium export bicycle-parking.osm.pbf -o bicycle-parking.geojson --overwrite
-
-# build tiles with tilemaker
-echo "Buildings tile with tilemaker"
-podman run \
-  -v /var/tilemaker/:/srv:z \
-  --name tilemaker \
-  --rm \
-  --cpu-shares 512 \
-  docker.io/stadtnavi/tilemaker:2f617ccb1aa49ecda2685a4721361a479f0b6b81 \
-  /srv/${PBF_FILE} \
-  --output=/srv/tiles/bicycle-amenities/  \
-  --config=/srv/config-openmaptiles.json \
-  --process=/srv/process-openmaptiles.lua \
-
 echo "Extracting cycleways"
 osmium tags-filter $PBF_FILE w/buskerudbyen:cycleway -o norway-filtered.pbf -f pbf --overwrite
 
