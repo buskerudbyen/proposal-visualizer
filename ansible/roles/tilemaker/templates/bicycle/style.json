@@ -2109,8 +2109,9 @@
         "text-halo-width": 1
       }
     },
+    {% for type in ["lockers", "shed"] %}
     {
-      "id": "poi-bicycle-parking-subtype",
+      "id": "poi-bicycle-parking-{{ type }}",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
@@ -2119,11 +2120,11 @@
         "all",
         ["==", "$type", "Point"],
         ["==", "subclass", "bicycle_parking"],
-        ["has", "type"],
+        ["==", "type", "{{ type }}"],
         ["any", ["!has", "level"], ["==", "level", 0]]
       ],
       "layout": {
-        "icon-image": "bicycle_parking_{type}_11",
+        "icon-image": "bicycle_parking_{{ type }}_11",
         "text-anchor": "top",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": ["Noto Sans Regular"],
@@ -2139,6 +2140,7 @@
         "text-halo-width": 1
       }
     },
+    {% endfor %}
     {
       "id": "poi-bicycle-repair-station",
       "type": "symbol",
