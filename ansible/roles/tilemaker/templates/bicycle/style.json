@@ -2109,7 +2109,7 @@
         "text-halo-width": 1
       }
     },
-    {% for type in ["lockers", "shed"] %}
+    {% for type in ["lockers", "shed", "covered"] %}
     {
       "id": "poi-bicycle-parking-{{ type }}",
       "type": "symbol",
