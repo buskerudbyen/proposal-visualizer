@@ -10,6 +10,8 @@ Environment=HOME=/root
 WorkingDirectory=/var/tilemaker
 ExecStart=/var/tilemaker/build-map
 Restart=on-failure
+#6 hours
+RuntimeMaxSec=21600
 
 ExecStopPost=systemd-failure-notification "tilemaker-map"
 
