@@ -13,7 +13,7 @@ Restart=on-failure
 #6 hours
 RuntimeMaxSec=21600
 
-ExecStopPost=systemd-failure-notification "tilemaker-map"
+ExecStopPost=systemd-failure-notification "🇳🇴 tilemaker-map"
 
 [Install]
 WantedBy=multi-user.target

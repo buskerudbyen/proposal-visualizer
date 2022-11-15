@@ -5,6 +5,7 @@
   become: yes
   roles:
     - base
+    - otp
     - tilemaker
     - apache
 

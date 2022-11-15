@@ -1,0 +1,29 @@
+[Unit]
+Description=Run OTP
+
+# Restart once within 20 minutes so that an intermittent network failures are gracefully handled
+StartLimitIntervalSec=1200
+StartLimitBurst=2
+
+[Service]
+ExecStartPre=-podman stop --ignore %n
+ExecStartPre=-podman rm %n
+
+ExecStartPre=-send-to-matrix "🔁 Starting OTP on {{ inventory_hostname }}"
+
+ExecStart=podman run \
+    --pull=always \
+    --name %n \
+    --rm -p {{ otp_port }}:8080 \
+    -e JAVA_OPTS="-Xmx1G" \
+    -e BIKELY_TOKEN="{{ bikely_token }}" \
+    -e BIKELY_AUTHORIZATION="{{ bikely_authorization }}" \
+    {{ otp_image }}
+
+ExecStop=podman stop --ignore %n
+ExecStop=-podman rm %n
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

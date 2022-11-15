@@ -1,0 +1,5 @@
+---
+- name: Restart otp
+  service:
+    name: otp
+    state: restarted
