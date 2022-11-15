@@ -49,6 +49,8 @@
     - rewrite
     - md
     - wsgi
+    - proxy
+    - proxy_http
   notify: Restart apache
 
 - name: Install systemd files
