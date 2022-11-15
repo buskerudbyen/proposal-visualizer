@@ -1,0 +1,9 @@
+{
+  "osm": [
+    {
+      "source": "https://download.geofabrik.de/europe/monaco-latest.osm.pbf",
+      "timeZone": "Europe/Oslo",
+      "osmTagMapping": "norway"
+    }
+  ]
+}
