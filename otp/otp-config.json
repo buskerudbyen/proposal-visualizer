@@ -1,3 +1,5 @@
 {
-  "SandboxAPIMapboxVectorTilesApi": true
+  "otpFeatures": {
+    "SandboxAPIMapboxVectorTilesApi": true
+  }
 }
