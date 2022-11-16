@@ -1,9 +1,10 @@
 {
   "osm": [
     {
-      "source": "https://download.geofabrik.de/europe/monaco-latest.osm.pbf",
+      "source": "https://leonard.io/otp/norway-all-corners.osm.pbf",
       "timeZone": "Europe/Oslo",
       "osmTagMapping": "norway"
     }
-  ]
+  ],
+  "islandWithoutStopsMaxSize": 0
 }

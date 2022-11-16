@@ -3,7 +3,7 @@
     {
       "name": "bikely",
       "type": "VehicleParking",
-      "mapper": "Stadtnavi",
+      "mapper": "Digitransit",
       "maxZoom": 20,
       "minZoom": 14,
       "cacheMaxSeconds": 300
