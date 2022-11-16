@@ -1,7 +1,7 @@
 {
   "vectorTileLayers": [
     {
-      "name": "vehicleParking",
+      "name": "bikely",
       "type": "VehicleParking",
       "mapper": "Stadtnavi",
       "maxZoom": 20,
