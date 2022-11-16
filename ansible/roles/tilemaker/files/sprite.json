@@ -104,6 +104,13 @@
     "x": 153,
     "y": 38
   },
+  "bicycle_parking_lockers_bikely_11": {
+    "height": 15,
+    "pixelRatio": 1,
+    "width": 18,
+    "x": 168,
+    "y": 38
+  },
   "bicycle_parking_private_11": {
     "height": 17,
     "pixelRatio": 1,
@@ -115,7 +122,7 @@
     "height": 15,
     "pixelRatio": 1,
     "width": 15,
-    "x": 168,
+    "x": 186,
     "y": 38
   },
   "bicycle_rental_11": {
@@ -129,7 +136,7 @@
     "height": 15,
     "pixelRatio": 1,
     "width": 15,
-    "x": 183,
+    "x": 201,
     "y": 38
   },
   "bus_11": {
@@ -514,42 +521,42 @@
     "height": 14,
     "pixelRatio": 1,
     "width": 14,
-    "x": 198,
+    "x": 216,
     "y": 38
   },
   "road_2": {
     "height": 14,
     "pixelRatio": 1,
     "width": 20,
-    "x": 212,
+    "x": 230,
     "y": 38
   },
   "road_3": {
     "height": 14,
     "pixelRatio": 1,
     "width": 25,
-    "x": 232,
+    "x": 250,
     "y": 38
   },
   "road_4": {
     "height": 14,
     "pixelRatio": 1,
     "width": 31,
-    "x": 257,
+    "x": 275,
     "y": 38
   },
   "road_5": {
     "height": 14,
     "pixelRatio": 1,
     "width": 36,
-    "x": 288,
-    "y": 38
+    "x": 153,
+    "y": 55
   },
   "road_6": {
     "height": 14,
     "pixelRatio": 1,
     "width": 40,
-    "x": 153,
+    "x": 189,
     "y": 55
   },
   "rocket_11": {
@@ -682,42 +689,42 @@
     "height": 14,
     "pixelRatio": 1,
     "width": 17,
-    "x": 193,
-    "y": 55
+    "x": 306,
+    "y": 38
   },
   "us-state_2": {
     "height": 14,
     "pixelRatio": 1,
     "width": 22,
-    "x": 210,
+    "x": 229,
     "y": 55
   },
   "us-state_3": {
     "height": 14,
     "pixelRatio": 1,
     "width": 27,
-    "x": 232,
+    "x": 251,
     "y": 55
   },
   "us-state_4": {
     "height": 14,
     "pixelRatio": 1,
     "width": 32,
-    "x": 259,
+    "x": 278,
     "y": 55
   },
   "us-state_5": {
     "height": 14,
     "pixelRatio": 1,
     "width": 37,
-    "x": 291,
-    "y": 55
+    "x": 153,
+    "y": 72
   },
   "us-state_6": {
     "height": 14,
     "pixelRatio": 1,
     "width": 42,
-    "x": 153,
+    "x": 190,
     "y": 72
   },
   "veterinary_11": {
@@ -738,8 +745,8 @@
     "height": 8,
     "pixelRatio": 1,
     "width": 16,
-    "x": 195,
-    "y": 72
+    "x": 310,
+    "y": 55
   },
   "zoo_11": {
     "height": 17,
