@@ -1,4 +1,4 @@
-FROM docker.io/lehrenfried/opentripplanner:bikely-fix
+FROM docker.io/opentripplanner/opentripplanner:6aadbf753fa1fb018a2ea64cedf3b53c80f9861f
 
 ## need to override the data location because /var/opentripplanner/ is a volume
 WORKDIR /var/otp/
