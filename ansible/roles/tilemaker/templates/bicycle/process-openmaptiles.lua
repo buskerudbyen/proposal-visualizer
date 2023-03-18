@@ -568,6 +568,17 @@ function way_function(way)
 	if     boundary=="national_park" then way:Layer("park",true); way:Attribute("class",boundary); SetNameAttributes(way)
 	elseif leisure=="nature_reserve" then way:Layer("park",true); way:Attribute("class",leisure ); SetNameAttributes(way) end
 
+	-- Leisure tracks
+	if leisure=="track" then
+		way:Layer("poi", true)
+		way:Attribute("class", "leisure")
+		way:Attribute("subclass", "track")
+		local sportType = way:Find("sport")
+		if sportType=="bmx" or sportType=="cycling" then
+			way:Attribute("sport", "bike")
+		end
+	end
+
 	-- POIs ('poi' and 'poi_detail')
 	local rank, class, subclass = GetPOIRank(way)
 	if rank then WritePOI(way,class,subclass,rank); return end
