@@ -628,6 +628,11 @@ function WritePOI(obj,class,subclass,rank)
 			obj:AttributeNumeric("private", 1)
 		end
 	end
+
+	if subclass=="bicycle_repair_station" then
+		obj:Attribute("pump", obj:Find("service:bicycle:pump"))
+		obj:Attribute("tools", obj:Find("service:bicycle:tools"))
+	end
 end
 
 -- Set name attributes on any object
