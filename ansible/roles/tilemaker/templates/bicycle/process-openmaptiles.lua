@@ -633,6 +633,17 @@ function WritePOI(obj,class,subclass,rank)
 		obj:Attribute("pump", obj:Find("service:bicycle:pump"))
 		obj:Attribute("tools", obj:Find("service:bicycle:tools"))
 	end
+
+	if subclass=="sports" then
+		local isBike = "no"
+		local repair = obj:Find("service:bicycle:repair") == "yes"
+		local retail = obj:Find("service:bicycle:retail") == "yes"
+		local second_hand = obj:Find("service:bicycle:second_hand") == "yes"
+		if repair or retail or second_hand then
+			isBike = "yes"
+		end
+		obj:Attribute("bike", isBike)
+	end
 end
 
 -- Set name attributes on any object
