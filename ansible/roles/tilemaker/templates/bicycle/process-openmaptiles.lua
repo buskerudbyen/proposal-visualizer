@@ -568,6 +568,17 @@ function way_function(way)
 	if     boundary=="national_park" then way:Layer("park",true); way:Attribute("class",boundary); SetNameAttributes(way)
 	elseif leisure=="nature_reserve" then way:Layer("park",true); way:Attribute("class",leisure ); SetNameAttributes(way) end
 
+	-- Leisure tracks
+	if leisure=="track" then
+		way:Layer("poi", true)
+		way:Attribute("class", "leisure")
+		way:Attribute("subclass", "track")
+		local sportType = way:Find("sport")
+		if sportType=="bmx" or sportType=="cycling" then
+			way:Attribute("sport", "bike")
+		end
+	end
+
 	-- POIs ('poi' and 'poi_detail')
 	local rank, class, subclass = GetPOIRank(way)
 	if rank then WritePOI(way,class,subclass,rank); return end
@@ -617,14 +628,14 @@ function WritePOI(obj,class,subclass,rank)
 		local access = obj:Find("access")
 
 		if obj:Find("access")=="customers" and obj:Find("fee")=="yes" and obj:Holds("operator") and obj:Find("operator"):startswith("Bane") then
-       obj:Attribute("type", "shed")
+			obj:Attribute("type", "shed")
 		elseif obj:Find("bicycle_parking")=="lockers" then
- 			obj:Attribute("type", "lockers")
+			obj:Attribute("type", "lockers")
 		elseif obj:Find("covered")=="yes" then
 			obj:Attribute("type", "covered")
- 		end
+		end
 
-    if access=="private" or access=="customers" or access=="no" then
+		if access=="private" or access=="customers" or access=="no" then
 			obj:AttributeNumeric("private", 1)
 		end
 	end
