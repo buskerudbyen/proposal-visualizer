@@ -570,12 +570,15 @@ function way_function(way)
 
 	-- Leisure tracks
 	if leisure=="track" then
-		way:Layer("poi", true)
-		way:Attribute("class", "leisure")
-		way:Attribute("subclass", "track")
+		way:Layer("landuse", true)
+		SetNameAttributes(way)
 		local sportType = way:Find("sport")
 		if sportType=="bmx" or sportType=="cycling" then
 			way:Attribute("sport", "bike")
+			way:Attribute("class", "leisure")
+			way:Attribute("subclass", "track")
+		elseif sportType=="athletics" then
+			way:Attribute("class", "pitch")
 		end
 	end
 
@@ -654,11 +657,6 @@ function WritePOI(obj,class,subclass,rank)
 			isBike = "yes"
 		end
 		obj:Attribute("bike", isBike)
-	end
-
-	if class=="leisure" and subclass=="track" then
-		local sportType = obj:Find("sport")
-		obj:Attribute("sport", sportType)
 	end
 end
 

@@ -147,23 +147,6 @@
       }
     },
     {
-      "id": "landuse-track",
-      "type": "fill",
-      "metadata": {"mapbox:group": "1444849388993.3071"},
-      "source": "openmaptiles",
-      "source-layer": "poi",
-      "filter": [
-        "all",
-        ["==", "class", "leisure"],
-        ["==", "subclass", "track"]
-      ],
-      "layout": {"visibility": "visible"},
-      "paint": {
-        "fill-color": "#63b063",
-        "fill-opacity": {"base": 1, "stops": [[0, 0.9], [10, 0.3]]}
-      }
-    },
-    {
       "id": "landcover-wood",
       "type": "fill",
       "metadata": {"mapbox:group": "1444849388993.3071"},
@@ -2363,7 +2346,7 @@
       "id": "poi-pump-track",
       "type": "line",
       "source": "openmaptiles",
-      "source-layer": "poi",
+      "source-layer": "landuse",
       "minzoom": 15,
       "filter": [
         "all",
@@ -2440,14 +2423,11 @@
       "id": "poi-athletics",
       "type": "symbol",
       "source": "openmaptiles",
-      "source-layer": "poi",
+      "source-layer": "landuse",
       "minzoom": 15,
       "filter": [
         "all",
-        ["==", "$type", "Point"],
-        ["==", "class", "leisure"],
-        ["==", "subclass", "track"],
-        ["==", "sport", "athletics"],
+        ["==", "class", "pitch"],
         ["any", ["has", "name:latin"], ["has", "name:nonlatin"]]
       ],
       "layout": {
