@@ -154,7 +154,7 @@ poiTags         = { aerialway = Set { "station" },
 					amenity = Set { "arts_centre", "bank", "bar", "bbq", "bicycle_parking", "bicycle_rental", "bicycle_repair_station", "biergarten", "bus_station", "cafe", "cinema", "clinic", "college", "community_centre", "compressed_air", "courthouse", "dentist", "doctors", "embassy", "fast_food", "ferry_terminal", "fire_station", "food_court", "fuel", "grave_yard", "hospital", "ice_cream", "kindergarten", "library", "marketplace", "motorcycle_parking", "nightclub", "nursing_home", "parking", "pharmacy", "place_of_worship", "police", "post_box", "post_office", "prison", "pub", "public_building", "recycling", "restaurant", "school", "shelter", "swimming_pool", "taxi", "telephone", "theatre", "toilets", "townhall", "university", "veterinary", "waste_basket" },
 					barrier = Set { "bollard", "border_control", "cycle_barrier", "gate", "lift_gate", "sally_port", "stile", "toll_booth" },
 					building = Set { "dormitory", "sports_centre" },
-					highway = Set { "bus_stop" },
+					highway = Set { "bus_stop", "track" },
 					historic = Set { "monument", "castle", "ruins" },
 					landuse = Set { "basin", "brownfield", "cemetery", "reservoir", "winter_sports" },
 					leisure = Set { "dog_park", "escape_game", "garden", "golf_course", "ice_rink", "hackerspace", "marina", "miniature_golf", "park", "pitch", "playground", "sports_centre", "stadium", "swimming_area", "swimming_pool", "track", "water_park" },
@@ -380,6 +380,13 @@ function way_function(way)
 				way:AttributeNumeric("cycleway", 1)
 			end
 
+			if h=="track" then
+				if has_thruthy_tag(way, "bicycle") then
+					way:Attribute("tracktype", way:Find("tracktype"))
+					way:Attribute("mtb:scale", way:Find("mtb:scale"))
+				end
+			end
+
 			-- Write names
 			if minzoom < 8 then
 				minzoom = 8
@@ -395,7 +402,6 @@ function way_function(way)
 				way:MinZoom(minzoom)
 			end
 			SetNameAttributes(way)
-			way:Attribute("class",h)
 			way:Attribute("network","road") -- **** could also be us-interstate, us-highway, us-state
 			if h~=highway then way:Attribute("subclass",highway) end
 			local ref = way:Find("ref")
