@@ -380,10 +380,12 @@ function way_function(way)
 				way:AttributeNumeric("cycleway", 1)
 			end
 
-			if h=="track" then
-				if has_thruthy_tag(way, "bicycle") then
-					way:Attribute("tracktype", way:Find("tracktype"))
-					way:Attribute("mtb:scale", way:Find("mtb:scale"))
+			if h=="track" and has_thruthy_tag(way, "bicycle") then
+				local tracktype = way:Find("tracktype")
+				local tracktypeArray = {"grade3", "grade2", "grade1"}
+				local scale = way:Find("mtb:scale")
+				if has_value(tracktypeArray, tracktype) or scale == 0 then
+					way:Attribute("subclass", "bicycle")
 				end
 			end
 
@@ -618,7 +620,14 @@ function has_thruthy_tag(item, tag)
 	return item:Holds(tag) and item:Find(tag)~="no"
 end
 
-
+function has_value(arr, val)
+	for i, value in ipairs(arr) do
+		if value == val then
+			return true
+		end
+	end
+	return false
+end
 
 -- ==========================================================
 -- Common functions

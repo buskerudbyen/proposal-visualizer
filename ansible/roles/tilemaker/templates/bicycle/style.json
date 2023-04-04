@@ -2370,7 +2370,7 @@
       "filter": [
         "all",
         ["==", "class", "track"],
-        ["any", ["in", "tracktype", "grade3", "grade2", "grade1"], ["==", "mtb:scale", 0]]
+        ["==", "subclass", "bicycle"]
       ],
       "layout": {"line-cap": "round", "visibility": "visible"},
       "paint": {
