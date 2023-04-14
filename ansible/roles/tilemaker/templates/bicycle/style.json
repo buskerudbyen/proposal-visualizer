@@ -2362,6 +2362,24 @@
       }
     },
     {
+      "id": "poi-bike-track",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "class", "track"],
+        ["==", "subclass", "bicycle"]
+      ],
+      "layout": {"line-cap": "round", "visibility": "visible"},
+      "paint": {
+        "line-color": "#069b15",
+        "line-dasharray": [3, 5],
+        "line-width": {"base": 1.3, "stops": [[15, 0.5], [20, 6]]}
+      }
+    },
+    {
       "id": "poi-sports-centre",
       "type": "symbol",
       "source": "openmaptiles",
