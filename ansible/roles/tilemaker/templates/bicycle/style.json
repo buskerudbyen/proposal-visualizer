@@ -2000,6 +2000,26 @@
       "paint": {"icon-opacity": 0.5}
     },
     {
+      "id": "tunnel-conditional",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": [
+        "all",
+        ["==", "brunnel", "tunnel"],
+        ["has", "opening_hours"]
+      ],
+      "layout": {
+        "icon-image": "information",
+        "icon-padding": 2,
+        "icon-rotation-alignment": "viewport",
+        "icon-size": {"stops": [[15, 1], [22, 1.5]]},
+        "symbol-placement": "line",
+        "symbol-spacing": 75
+      },
+      "paint": {"icon-opacity": 0.5}
+    },
+    {
       "id": "poi-level-3",
       "type": "symbol",
       "source": "openmaptiles",
