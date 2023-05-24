@@ -2362,6 +2362,35 @@
       }
     },
     {
+      "id": "pump-track-name",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "minzoom": 17,
+      "filter": [
+        "all",
+        ["==", "class", "leisure"],
+        ["==", "subclass", "track"],
+        ["==", "sport", "bike"],
+        ["any", ["has", "name:latin"], ["has", "name:nonlatin"]]
+      ],
+      "layout": {
+        "symbol-placement": "point",
+        "symbol-spacing": 400,
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-font": ["Noto Sans Regular"],
+        "text-rotation-alignment": "map",
+        "text-size": {"base": 1, "stops": [[17, 10], [22, 21]]},
+        "text-offset": [0, 1.2]
+      },
+      "paint": {
+        "text-color": "#f0b811",
+        "text-halo-blur": 0.5,
+        "text-halo-width": 1,
+        "text-halo-color" :	"#fff"
+      }
+    },
+    {
       "id": "poi-bike-track",
       "type": "line",
       "source": "openmaptiles",
