@@ -2004,6 +2004,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 15,
       "filter": [
         "all",
         ["==", "brunnel", "tunnel"],
@@ -2015,7 +2016,7 @@
         "icon-rotation-alignment": "viewport",
         "icon-size": {"stops": [[15, 1], [22, 1.5]]},
         "symbol-placement": "line",
-        "symbol-spacing": 75
+        "symbol-spacing": 125
       },
       "paint": {"icon-opacity": 0.5}
     },
