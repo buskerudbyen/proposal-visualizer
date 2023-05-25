@@ -2143,6 +2143,37 @@
         "text-halo-width": 1
       }
     },
+    {
+      "id": "bicycle-parking-shed-badge",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "subclass", "bicycle_parking"],
+        ["==", "type", "shed"],
+        ["has", "capacity"],
+        ["any", ["!has", "level"], ["==", "level", 0]]
+      ],
+      "layout": {
+        "icon-image": "badge",
+        "icon-size": 1.2,
+        "icon-ignore-placement": true,
+        "icon-offset": [3, -2],
+        "icon-anchor": "bottom-left",
+        "text-field": "{capacity}",
+        "text-font": ["Noto Sans Regular"],
+        "text-max-width": 5,
+        "text-size": 10,
+        "text-anchor": "bottom-left",
+        "text-offset": [0.6, -0.7]
+      },
+      "paint": {
+        "text-color": "#fff"
+      }
+    },
     {% for type in ["lockers", "shed", "covered"] %}
     {
       "id": "poi-bicycle-parking-{{ type }}",
@@ -2159,6 +2190,7 @@
       ],
       "layout": {
         "icon-image": "bicycle_parking_{{ type }}_11",
+        "icon-ignore-placement": true,
         "text-anchor": "top",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": ["Noto Sans Regular"],
