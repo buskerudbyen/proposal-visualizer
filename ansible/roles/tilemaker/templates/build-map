@@ -77,5 +77,5 @@ podman run \
   --process=/srv/bicycle/process-openmaptiles.lua \
   --store=/root/store \
 
-send-to-matrix "tilemaker-map successful"
+send-to-matrix "🇳🇴 tilemaker-map successful"
 
