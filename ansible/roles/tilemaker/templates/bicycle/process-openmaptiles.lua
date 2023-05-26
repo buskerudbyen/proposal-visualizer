@@ -389,6 +389,16 @@ function way_function(way)
 				end
 			end
 
+			if way:Find("tunnel") == "yes" and has_thruthy_tag(way, "bicycle") then
+				if way:Holds("lit") and way:Find("lit") ~= "yes" then
+					way:Attribute("opening_hours", way:Find("lit"))
+				elseif way:Holds("opening_hours") then
+					way:Attribute("opening_hours", way:Find("opening_hours"))
+				elseif way:Holds("bicycle:conditional") then
+					way:Attribute("opening_hours", way:Find("bicycle:conditional"))
+				end
+			end
+
 			-- Write names
 			if minzoom < 8 then
 				minzoom = 8
