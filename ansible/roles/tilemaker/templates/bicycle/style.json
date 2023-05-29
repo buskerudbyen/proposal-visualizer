@@ -2160,6 +2160,7 @@
       "layout": {
         "icon-image": "badge",
         "icon-size": 1.2,
+        "icon-allow-overlap": true,
         "icon-ignore-placement": true,
         "icon-offset": [3, -2],
         "icon-anchor": "bottom-left",
@@ -2168,7 +2169,8 @@
         "text-max-width": 5,
         "text-size": 10,
         "text-anchor": "bottom-left",
-        "text-offset": [0.6, -0.7]
+        "text-offset": [0.6, -0.7],
+        "symbol-sort-key": 2
       },
       "paint": {
         "text-color": "#fff"
@@ -2191,13 +2193,16 @@
       "layout": {
         "icon-image": "bicycle_parking_{{ type }}_11",
         "icon-ignore-placement": true,
+        "icon-allow-overlap": true,
         "text-anchor": "top",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": ["Noto Sans Regular"],
         "text-max-width": 9,
         "text-offset": [0, 0.6],
         "text-padding": 2,
-        "text-size": 12
+        "text-size": 12,
+        "symbol-sort-key": 1,
+        "text-allow-overlap": true
       },
       "paint": {
         "text-color": "#666",
