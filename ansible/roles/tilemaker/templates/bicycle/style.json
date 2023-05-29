@@ -2008,7 +2008,7 @@
       "filter": [
         "all",
         ["==", "brunnel", "tunnel"],
-        ["has", "opening_hours"]
+        ["any", ["has", "opening_hours"], ["has", "lit"], ["has", "conditional_bike"]]
       ],
       "layout": {
         "icon-image": "information",

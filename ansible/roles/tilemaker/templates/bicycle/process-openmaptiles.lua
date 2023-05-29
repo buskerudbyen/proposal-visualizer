@@ -391,11 +391,13 @@ function way_function(way)
 
 			if way:Find("tunnel") == "yes" and has_thruthy_tag(way, "bicycle") then
 				if way:Holds("lit") and way:Find("lit") ~= "yes" then
-					way:Attribute("opening_hours", way:Find("lit"))
-				elseif way:Holds("opening_hours") then
+					way:Attribute("lit", way:Find("lit"))
+				end
+				if way:Holds("opening_hours") then
 					way:Attribute("opening_hours", way:Find("opening_hours"))
-				elseif way:Holds("bicycle:conditional") then
-					way:Attribute("opening_hours", way:Find("bicycle:conditional"))
+				end
+				if way:Holds("bicycle:conditional") then
+					way:Attribute("conditional_bike", way:Find("bicycle:conditional"))
 				end
 			end
 
