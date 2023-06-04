@@ -1691,11 +1691,33 @@
       "source": "openmaptiles",
       "source-layer": "transportation",
       "minzoom": 14,
-      "filter": ["==", "cycleway", 1],
+      "filter": [
+        "all",
+        ["==", "cycleway", 1],
+        ["!=", "brunnel", "tunnel"]
+      ],
       "layout": {"line-join": "round", "visibility": "visible"},
       "paint": {
         "line-color": "#069b15",
         "line-width": 2
+      }
+    },
+    {
+      "id": "tunnel-bicycle-lane",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 14,
+      "filter": [
+        "all",
+        ["==", "cycleway", 1],
+        ["==", "brunnel", "tunnel"]
+      ],
+      "layout": {"line-join": "round", "visibility": "visible"},
+      "paint": {
+        "line-color": "#069b15",
+        "line-width": 2,
+        "line-dasharray": [4, 1]
       }
     },
     {
