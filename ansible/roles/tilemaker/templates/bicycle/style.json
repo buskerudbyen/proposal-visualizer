@@ -475,7 +475,7 @@
         "line-dasharray": [0.5, 0.25],
         "line-width": {
           "base": 1.2,
-          "stops": [[12, 1], [13, 3], [14, 4], [20, 15]]
+          "stops": [[12, 1], [20, 8]]
         }
       }
     },
@@ -579,7 +579,7 @@
         "line-dasharray": [0.5, 0.25],
         "line-width": {
           "base": 1.2,
-          "stops": [[5, 0.4], [6, 0.6], [7, 1.5], [20, 22]]
+          "stops": [[5, 0.4], [6, 0.6], [7, 1.5], [20, 12]]
         }
       }
     },
@@ -615,10 +615,10 @@
       ],
       "layout": {"line-join": "round", "visibility": "visible"},
       "paint": {
-        "line-color": "rgba(244, 209, 158, 1)",
+        "line-color": "#C0C0C0",
         "line-width": {
           "base": 1.2,
-          "stops": [[12.5, 0], [13, 1.5], [14, 2.5], [20, 11.5]]
+          "stops": [[12.5, 0], [13, 1.5], [14, 2], [20, 6]]
         }
       }
     },
@@ -724,8 +724,8 @@
       ],
       "layout": {"line-join": "round", "visibility": "visible"},
       "paint": {
-        "line-color": "#ffdaa6",
-        "line-width": {"base": 1.2, "stops": [[6.5, 0], [7, 0.5], [20, 18]]}
+        "line-color": "#C0C0C0",
+        "line-width": {"base": 1.2, "stops": [[6.5, 0], [7, 0.2], [20, 10]]}
       }
     },
     {
@@ -754,7 +754,6 @@
         "line-width": 1.1
       }
     },
-
     {
       "id": "aeroway-taxiway-casing",
       "type": "line",
@@ -910,11 +909,11 @@
       ],
       "layout": {"line-cap": "round", "line-join": "round"},
       "paint": {
-        "line-color": "#e9ac77",
+        "line-color": "#C0C0C0",
         "line-opacity": 1,
         "line-width": {
           "base": 1.2,
-          "stops": [[12, 1], [13, 3], [14, 4], [20, 15]]
+          "stops": [[12, 1], [13, 3], [14, 4], [20, 8]]
         }
       }
     },
@@ -1060,11 +1059,11 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "#e9ac77",
+        "line-color": "#C0C0C0",
         "line-opacity": {"stops": [[4, 0], [5, 1]]},
         "line-width": {
           "base": 1.2,
-          "stops": [[4, 0], [5, 0.4], [6, 0.6], [7, 1.5], [20, 22]]
+          "stops": [[5, 0], [6, 0.5], [7, 1.5], [20, 12]]
         }
       }
     },
@@ -1101,10 +1100,10 @@
       ],
       "layout": {"line-cap": "round", "line-join": "round"},
       "paint": {
-        "line-color": "#fc8",
+        "line-color": "#C0C0C0",
         "line-width": {
           "base": 1.2,
-          "stops": [[12.5, 0], [13, 1.5], [14, 2.5], [20, 11.5]]
+          "stops": [[12.5, 0], [13, 1.5], [14, 2.5], [20, 6]]
         }
       }
     },
@@ -1241,8 +1240,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "#fc8",
-        "line-width": {"base": 1.2, "stops": [[6.5, 0], [7, 0.5], [20, 18]]}
+        "line-color": "#C0C0C0",
+        "line-width": {"base": 1.2, "stops": [[6.5, 0], [7, 0.5], [20, 12]]}
       }
     },
     {
@@ -1369,11 +1368,11 @@
       ],
       "layout": {"line-join": "round"},
       "paint": {
-        "line-color": "#e9ac77",
+        "line-color": "#C0C0C0",
         "line-opacity": 1,
         "line-width": {
           "base": 1.2,
-          "stops": [[12, 1], [13, 3], [14, 4], [20, 19]]
+          "stops": [[12, 1], [13, 3], [14, 4], [20, 12]]
         }
       }
     },
@@ -1453,10 +1452,10 @@
       ],
       "layout": {"line-join": "round"},
       "paint": {
-        "line-color": "#e9ac77",
+        "line-color": "#C0C0C0",
         "line-width": {
           "base": 1.2,
-          "stops": [[5, 0.4], [6, 0.6], [7, 1.5], [20, 26]]
+          "stops": [[5, 0.4], [6, 0.6], [7, 1], [20, 12]]
         }
       }
     },
@@ -1531,10 +1530,10 @@
       ],
       "layout": {"line-join": "round"},
       "paint": {
-        "line-color": "#fc8",
+        "line-color": "#C0C0C0",
         "line-width": {
-          "base": 1.2,
-          "stops": [[12.5, 0], [13, 1.5], [14, 2.5], [20, 11.5]]
+          "base": 0.8,
+          "stops": [[12.5, 0], [13, 1], [20, 6]]
         }
       }
     },
@@ -1628,8 +1627,8 @@
       ],
       "layout": {"line-join": "round"},
       "paint": {
-        "line-color": "#fc8",
-        "line-width": {"base": 1.2, "stops": [[6.5, 0], [7, 0.5], [20, 18]]}
+        "line-color": "#C0C0C0",
+        "line-width": {"base": 1.2, "stops": [[6.5, 0], [7, 0.5], [20, 10]]}
       }
     },
     {
