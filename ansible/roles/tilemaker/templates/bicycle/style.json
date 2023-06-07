@@ -2453,7 +2453,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 15,
+      "minzoom": 14,
       "filter": [
         "all",
         ["==", "class", "track"],
@@ -2463,7 +2463,7 @@
       "paint": {
         "line-color": "#069b15",
         "line-dasharray": [3, 5],
-        "line-width": {"base": 1.3, "stops": [[15, 0.5], [20, 6]]}
+        "line-width": 2
       }
     },
     {
