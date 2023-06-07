@@ -363,6 +363,10 @@ function way_function(way)
 			SetBrunnelAttributes(way)
 			if ramp then way:AttributeNumeric("ramp",1) end
 
+			-- No bike roads
+			if has_falsy_tag(way, "bicycle") or has_thruthy_tag(way, "motorroad") then
+				way:Attribute("no_bike", 1)
+			end
 
 			-- Service
 			if highway == "service" and service ~="" then way:Attribute("service", service) end
@@ -630,6 +634,10 @@ end
 
 function has_thruthy_tag(item, tag)
 	return item:Holds(tag) and item:Find(tag)~="no"
+end
+
+function has_falsy_tag(item, tag)
+	return item:Holds(tag) and item:Find(tag)=="no"
 end
 
 function has_value(arr, val)
