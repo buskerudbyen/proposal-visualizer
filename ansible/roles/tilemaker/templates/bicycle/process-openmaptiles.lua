@@ -354,6 +354,13 @@ function way_function(way)
 			end
 		end
 
+		-- no snowplowing
+		local winter_months = Set { 'Nov', 'Dec', 'Jan', 'Feb' }
+		local current_month = os.date('%b')
+		if has_falsy_tag(way, "snowplowing") and winter_months[current_month] then
+			way:Attribute("snowplowing", "no")
+		end
+
 		-- Write to layer
 		if minzoom <= 14 then
 			way:Layer(layer, false)

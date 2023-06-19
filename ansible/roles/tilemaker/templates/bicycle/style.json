@@ -2201,6 +2201,26 @@
       "paint": {"icon-opacity": 0.5}
     },
     {
+      "id": "no-snowplowing-winter_road",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "snowplowing", "no"]
+      ],
+      "layout": {
+        "icon-image": "information",
+        "icon-padding": 2,
+        "icon-rotation-alignment": "viewport",
+        "icon-size": {"stops": [[15, 1], [22, 1.5]]},
+        "symbol-placement": "line",
+        "symbol-spacing": 125
+      },
+      "paint": {"icon-opacity": 0.5}
+    },
+    {
       "id": "poi-level-3",
       "type": "symbol",
       "source": "openmaptiles",
