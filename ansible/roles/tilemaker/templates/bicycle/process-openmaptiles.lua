@@ -393,7 +393,7 @@ function way_function(way)
 				end
 			end
 
-			if way:Find("tunnel") == "yes" and has_thruthy_tag(way, "bicycle") then
+			if way:Find("tunnel") == "yes" and (has_thruthy_tag(way, "bicycle") or has_cycleway) then
 				if way:Holds("lit") and way:Find("lit") ~= "yes" then
 					way:Attribute("lit", way:Find("lit"))
 				end
