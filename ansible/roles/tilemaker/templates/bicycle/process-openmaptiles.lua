@@ -369,26 +369,6 @@ function way_function(way)
 			end
 		end
 
-		-- no snowplowing
-		local current_month = os.date('%b')
-		if has_falsy_tag(way, 'snowplowing') then
-			if way:Holds('motor_vehicle:conditional') then -- eg. 'no @ Nov-May'
-				local first, last = string.match(way:Find('motor_vehicle:conditional'), "(%u..)-(%u..)")
-				if monthMap[current_month] >= monthMap[first] or monthMap[current_month] <= monthMap[last] then
-					way:Attribute('snowplowing', 'no')
-				end
-			elseif way:Holds('opening_hours') then -- eg. 'Apr-Oct'
-				local last, first = string.match(way:Find('opening_hours'), "(%u..)-(%u..)")
-				if monthMap[current_month] > monthMap[last] or monthMap[current_month] < monthMap[first] then
-					way:Attribute('snowplowing', 'no')
-				end
-			else -- default closed Nov-Feb
-				if monthMap[current_month] >= monthMap['Nov'] or monthMap[current_month] <= monthMap['Feb'] then
-					way:Attribute('snowplowing', 'no')
-				end
-			end
-		end
-
 		-- Write to layer
 		if minzoom <= 14 then
 			way:Layer(layer, false)
@@ -437,6 +417,26 @@ function way_function(way)
 				end
 				if way:Holds("bicycle:conditional") then
 					way:Attribute("conditional_bike", way:Find("bicycle:conditional"))
+				end
+			end
+
+			-- no snowplowing
+			local current_month = os.date('%b')
+			if has_falsy_tag(way, 'snowplowing') then
+				if way:Holds('motor_vehicle:conditional') then -- eg. 'no @ Nov-May'
+					local first, last = string.match(way:Find('motor_vehicle:conditional'), "(%u..)-(%u..)")
+					if monthMap[current_month] >= monthMap[first] or monthMap[current_month] <= monthMap[last] then
+						way:Attribute('snowplowing', 'no')
+					end
+				elseif way:Holds('opening_hours') then -- eg. 'Apr-Oct'
+					local last, first = string.match(way:Find('opening_hours'), "(%u..)-(%u..)")
+					if monthMap[current_month] > monthMap[last] or monthMap[current_month] < monthMap[first] then
+						way:Attribute('snowplowing', 'no')
+					end
+				else -- default closed Nov-Feb
+					if monthMap[current_month] >= monthMap['Nov'] or monthMap[current_month] <= monthMap['Feb'] then
+						way:Attribute('snowplowing', 'no')
+					end
 				end
 			end
 
