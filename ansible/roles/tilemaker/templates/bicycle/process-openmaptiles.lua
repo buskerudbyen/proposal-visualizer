@@ -420,6 +420,7 @@ function way_function(way)
 				way:MinZoom(minzoom)
 			end
 			SetNameAttributes(way)
+			way:Attribute("class", h)
 			way:Attribute("network","road") -- **** could also be us-interstate, us-highway, us-state
 			if h~=highway then way:Attribute("subclass",highway) end
 			local ref = way:Find("ref")
