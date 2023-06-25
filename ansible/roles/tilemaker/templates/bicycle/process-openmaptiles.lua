@@ -43,6 +43,21 @@ ZRES13 = 19.1
 -- The height of one floor, in meters
 BUILDING_FLOOR_HEIGHT = 3.66
 
+local monthMap = {
+	Jan = 1,
+	Feb = 2,
+	Mar = 3,
+	Apr = 4,
+	May = 5,
+	Jun = 6,
+	Jul = 7,
+	Aug = 8,
+	Sep = 9,
+	Oct = 10,
+	Nov = 11,
+	Dec = 12
+}
+
 -- Process node/way tags
 aerodromeValues = Set { "international", "public", "regional", "military", "private" }
 
@@ -355,10 +370,23 @@ function way_function(way)
 		end
 
 		-- no snowplowing
-		local winter_months = Set { 'Nov', 'Dec', 'Jan', 'Feb' }
 		local current_month = os.date('%b')
-		if has_falsy_tag(way, "snowplowing") and winter_months[current_month] then
-			way:Attribute("snowplowing", "no")
+		if has_falsy_tag(way, 'snowplowing') then
+			if way:Holds('motor_vehicle:conditional') then -- eg. 'no @ Nov-May'
+				local first, last = string.match(way:Find('motor_vehicle:conditional'), "(%u..)-(%u..)")
+				if monthMap[current_month] >= monthMap[first] or monthMap[current_month] <= monthMap[last] then
+					way:Attribute('snowplowing', 'no')
+				end
+			elseif way:Holds('opening_hours') then -- eg. 'Apr-Oct'
+				local last, first = string.match(way:Find('opening_hours'), "(%u..)-(%u..)")
+				if monthMap[current_month] > monthMap[last] or monthMap[current_month] < monthMap[first] then
+					way:Attribute('snowplowing', 'no')
+				end
+			else -- default closed Nov-Feb
+				if monthMap[current_month] >= monthMap['Nov'] or monthMap[current_month] <= monthMap['Feb'] then
+					way:Attribute('snowplowing', 'no')
+				end
+			end
 		end
 
 		-- Write to layer
