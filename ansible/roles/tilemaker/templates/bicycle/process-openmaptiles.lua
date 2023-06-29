@@ -704,6 +704,10 @@ function WritePOI(obj,class,subclass,rank)
 	if class=="campsite" and (has_thruthy_tag(obj, "tents") or has_thruthy_tag(obj, "cabins")) then
 		obj:Attribute("sleep", 1)
 	end
+
+	if subclass=="shelter" and obj:Holds("shelter_type") then
+		obj:Attribute("shelter_type", obj:Find("shelter_type"))
+	end
 end
 
 -- Set name attributes on any object
