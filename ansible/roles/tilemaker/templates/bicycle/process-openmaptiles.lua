@@ -598,7 +598,7 @@ function way_function(way)
 		way:Layer("landuse", true)
 		SetNameAttributes(way)
 		local sportType = way:Find("sport")
-		if sportType=="bmx" or sportType=="cycling" then
+		if string.find(sportType, "bmx") or string.find(sportType, "cycling") then
 			way:Attribute("sport", "bike")
 			way:Attribute("class", "leisure")
 			way:Attribute("subclass", "track")
