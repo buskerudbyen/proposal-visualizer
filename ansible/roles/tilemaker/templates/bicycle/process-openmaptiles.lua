@@ -156,7 +156,6 @@ poiTags         = { aerialway = Set { "station" },
 					building = Set { "dormitory", "sports_centre" },
 					highway = Set { "bus_stop", "track" },
 					historic = Set { "monument", "castle", "ruins" },
-					information = Set { "office" },
 					landuse = Set { "basin", "brownfield", "cemetery", "reservoir", "winter_sports" },
 					leisure = Set { "dog_park", "escape_game", "garden", "golf_course", "ice_rink", "hackerspace", "marina", "miniature_golf", "park", "pitch", "playground", "sports_centre", "stadium", "swimming_area", "swimming_pool", "track", "water_park" },
 					railway = Set { "halt", "station", "subway_entrance", "train_station_entrance", "tram_stop" },
@@ -700,6 +699,10 @@ function WritePOI(obj,class,subclass,rank)
 
 	if class=="tourism" and subclass=="information" and obj:Holds("information") and obj:Find("information") == "office" then
 		obj:Attribute("office", 1)
+	end
+
+	if class=="campsite" and (has_thruthy_tag(obj, "tents") or has_thruthy_tag(obj, "cabins")) then
+		obj:Attribute("sleep", 1)
 	end
 end
 

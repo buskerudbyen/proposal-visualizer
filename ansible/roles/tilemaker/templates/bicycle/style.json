@@ -2723,6 +2723,35 @@
       }
     },
     {
+      "id": "poi-camp",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "class", "campsite"],
+        ["has", "sleep"]
+      ],
+      "layout": {
+        "icon-image": "campsite_11",
+        "text-anchor": "top",
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-font": ["Noto Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-padding": 2,
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      }
+    },
+    {
       "id": "poi-pump-track",
       "type": "line",
       "source": "openmaptiles",
