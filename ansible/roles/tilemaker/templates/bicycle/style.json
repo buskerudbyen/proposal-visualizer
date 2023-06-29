@@ -2809,6 +2809,21 @@
       }
     },
     {
+      "id": "poi-drinking_water",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "subclass", "drinking_water"]
+      ],
+      "layout": {
+        "icon-image": "drinking_water_11"
+      }
+    },
+    {
       "id": "poi-pump-track",
       "type": "line",
       "source": "openmaptiles",
