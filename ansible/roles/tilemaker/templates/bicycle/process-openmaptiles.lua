@@ -194,8 +194,9 @@ poiClasses      = { townhall="town_hall", public_building="town_hall", courthous
 					art="art_gallery", artwork="art_gallery", gallery="art_gallery", arts_centre="art_gallery",
 					bag="clothing_store", clothes="clothing_store",
 					swimming_area="swimming", swimming="swimming",
-					castle="castle", ruins="castle" }
-poiClassRanks   = { hospital=1, railway=2, bus=3, attraction=4, harbor=5, college=6,
+					castle="castle", ruins="castle",
+					museum="museum" }
+poiClassRanks   = { hospital=1, railway=2, bus=3, attraction=4, museum=4, harbor=5, college=6,
 					school=7, stadium=8, zoo=9, town_hall=10, campsite=11, cemetery=12,
 					park=13, library=14, police=15, post=16, golf=17, shop=18, grocery=19,
 					fast_food=20, clothing_store=21, bar=22 }
