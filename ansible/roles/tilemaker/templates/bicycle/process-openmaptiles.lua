@@ -423,24 +423,24 @@ function way_function(way)
 			end
 
 			-- no snowplowing
-			local current_month = os.date('%b')
-			if has_falsy_tag(way, 'snowplowing') then
-				if way:Holds('motor_vehicle:conditional') then -- eg. 'no @ Nov-May'
-					local first, last = string.match(way:Find('motor_vehicle:conditional'), "(%u..)-(%u..)")
-					if monthMap[current_month] >= monthMap[first] or monthMap[current_month] <= monthMap[last] then
-						way:Attribute('snowplowing', 'no')
-					end
-				elseif way:Holds('opening_hours') then -- eg. 'Apr-Oct'
-					local last, first = string.match(way:Find('opening_hours'), "(%u..)-(%u..)")
-					if monthMap[current_month] > monthMap[last] or monthMap[current_month] < monthMap[first] then
-						way:Attribute('snowplowing', 'no')
-					end
-				else -- default closed Nov-Feb
-					if monthMap[current_month] >= monthMap['Nov'] or monthMap[current_month] <= monthMap['Feb'] then
-						way:Attribute('snowplowing', 'no')
-					end
-				end
-			end
+			--local current_month = os.date('%b')
+			--if has_falsy_tag(way, 'snowplowing') then
+			--	if way:Holds('motor_vehicle:conditional') then -- eg. 'no @ Nov-May'
+			--		local first, last = string.match(way:Find('motor_vehicle:conditional'), "(%u..)-(%u..)")
+			--		if monthMap[current_month] >= monthMap[first] or monthMap[current_month] <= monthMap[last] then
+			--			way:Attribute('snowplowing', 'no')
+			--		end
+			--	elseif way:Holds('opening_hours') then -- eg. 'Apr-Oct'
+			--		local last, first = string.match(way:Find('opening_hours'), "(%u..)-(%u..)")
+			--		if monthMap[current_month] > monthMap[last] or monthMap[current_month] < monthMap[first] then
+			--			way:Attribute('snowplowing', 'no')
+			--		end
+			--	else -- default closed Nov-Feb
+			--		if monthMap[current_month] >= monthMap['Nov'] or monthMap[current_month] <= monthMap['Feb'] then
+			--			way:Attribute('snowplowing', 'no')
+			--		end
+			--	end
+			--end
 
 			-- Write names
 			if minzoom < 8 then
