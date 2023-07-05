@@ -2323,7 +2323,6 @@
         ["==", "$type", "Point"],
         ["==", "subclass", "bicycle_parking"],
         ["==", "private", 1],
-        ["!has", "type"],
         ["any", ["!has", "level"], ["==", "level", 0]]
       ],
       "layout": {
@@ -2388,6 +2387,7 @@
         ["==", "$type", "Point"],
         ["==", "subclass", "bicycle_parking"],
         ["==", "type", "{{ type }}"],
+        ["!=", "private", 1],
         ["any", ["!has", "level"], ["==", "level", 0]]
       ],
       "layout": {
