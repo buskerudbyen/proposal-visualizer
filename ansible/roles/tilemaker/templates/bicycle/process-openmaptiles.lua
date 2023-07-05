@@ -427,7 +427,8 @@ function way_function(way)
 			if has_falsy_tag(way, 'snowplowing') then
 				if way:Holds('motor_vehicle:conditional') then -- eg. 'no @ Nov-May'
 					local first, last = string.match(way:Find('motor_vehicle:conditional'), "(%u..)-(%u..)")
-					if (monthMap[first] ~= nil and monthMap[current_month] >= monthMap[first]) or (monthMap[last] ~= nil and monthMap[current_month] <= monthMap[last]) then						way:Attribute('snowplowing', 'no')
+					if (monthMap[first] ~= nil and monthMap[current_month] >= monthMap[first]) or (monthMap[last] ~= nil and monthMap[current_month] <= monthMap[last]) then
+						way:Attribute('snowplowing', 'no')
 					end
 				elseif way:Holds('opening_hours') then -- eg. 'Apr-Oct'
 					local last, first = string.match(way:Find('opening_hours'), "(%u..)-(%u..)")
