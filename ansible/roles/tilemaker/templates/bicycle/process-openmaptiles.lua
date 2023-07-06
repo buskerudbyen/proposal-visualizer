@@ -744,6 +744,11 @@ function WritePOI(obj,class,subclass,rank)
 	if subclass=="shelter" and obj:Holds("shelter_type") then
 		obj:Attribute("shelter_type", obj:Find("shelter_type"))
 	end
+
+	if class=="toilet" then
+		obj:Attribute("fee", obj:Find("fee"))
+		obj:Attribute("opening_hours", obj:Find("opening_hours"))
+	end
 end
 
 -- Set name attributes on any object
