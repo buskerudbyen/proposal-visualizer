@@ -2387,7 +2387,8 @@
         ["==", "$type", "Point"],
         ["==", "subclass", "bicycle_parking"],
         ["==", "type", "{{ type }}"],
-        ["any", ["!has", "level"], ["==", "level", 0]]
+        ["any", ["!has", "level"], ["==", "level", 0]],
+        ["!=", "private", 1]
       ],
       "layout": {
         "icon-image": "bicycle_parking_{{ type }}_11",

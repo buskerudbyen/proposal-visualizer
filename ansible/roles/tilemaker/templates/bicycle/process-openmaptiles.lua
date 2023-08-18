@@ -712,7 +712,7 @@ function WritePOI(obj,class,subclass,rank)
 			obj:Attribute("type", "covered")
 		end
 
-		if access=="private" or access=="customers" or access=="no" then
+		if access=="private" or access=="no" then
 			obj:AttributeNumeric("private", 1)
 		end
 	end
