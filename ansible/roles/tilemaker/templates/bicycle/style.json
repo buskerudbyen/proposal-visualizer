@@ -3024,6 +3024,24 @@
       }
     },
     {
+      "id": "housenumbers",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "housenumber",
+      "minzoom": 16.5,
+      "layout": {
+        "text-field": "{housenumber}",
+        "text-font": ["Noto Sans Regular"],
+        "text-rotation-alignment": "map",
+        "text-size": {"base": 1, "stops": [[13, 10], [14, 11]]}
+      },
+      "paint": {
+        "text-color": "hsl(30, 23%, 62%)",
+        "text-halo-color": "#f8f4f0",
+        "text-halo-width": 0.5
+      }
+    },
+    {
       "id": "highway-name-path",
       "type": "symbol",
       "source": "openmaptiles",
