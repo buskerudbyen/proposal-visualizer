@@ -2282,67 +2282,6 @@
       }
     },
     {
-      "id": "poi-bicycle-parking-public",
-      "type": "symbol",
-      "source": "openmaptiles",
-      "source-layer": "poi",
-      "minzoom": 15,
-      "filter": [
-        "all",
-        ["==", "$type", "Point"],
-        ["==", "subclass", "bicycle_parking"],
-        ["!=", "private", 1],
-        ["!has", "type"],
-        ["any", ["!has", "level"], ["==", "level", 0]]
-      ],
-      "layout": {
-        "icon-image": "bicycle_parking_11",
-        "text-anchor": "top",
-        "text-field": "{name:latin}\n{name:nonlatin}",
-        "text-font": ["Noto Sans Regular"],
-        "text-max-width": 9,
-        "text-offset": [0, 0.6],
-        "text-padding": 2,
-        "text-size": 12
-      },
-      "paint": {
-        "text-color": "#666",
-        "text-halo-blur": 0.5,
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 1
-      }
-    },
-    {
-      "id": "poi-bicycle-parking-private",
-      "type": "symbol",
-      "source": "openmaptiles",
-      "source-layer": "poi",
-      "minzoom": 15,
-      "filter": [
-        "all",
-        ["==", "$type", "Point"],
-        ["==", "subclass", "bicycle_parking"],
-        ["==", "private", 1],
-        ["any", ["!has", "level"], ["==", "level", 0]]
-      ],
-      "layout": {
-        "icon-image": "bicycle_parking_private_11",
-        "text-anchor": "top",
-        "text-field": "{name:latin}\n{name:nonlatin}",
-        "text-font": ["Noto Sans Regular"],
-        "text-max-width": 9,
-        "text-offset": [0, 0.6],
-        "text-padding": 2,
-        "text-size": 12
-      },
-      "paint": {
-        "text-color": "#666",
-        "text-halo-blur": 0.5,
-        "text-halo-color": "#ffffff",
-        "text-halo-width": 1
-      }
-    },
-    {
       "id": "bicycle-parking-shed-badge",
       "type": "symbol",
       "source": "openmaptiles",
@@ -2375,9 +2314,8 @@
         "text-color": "#fff"
       }
     },
-    {% for type in ["lockers", "shed", "covered"] %}
     {
-      "id": "poi-bicycle-parking-{{ type }}",
+      "id": "poi-bicycle-parking-shed",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
@@ -2386,12 +2324,12 @@
         "all",
         ["==", "$type", "Point"],
         ["==", "subclass", "bicycle_parking"],
-        ["==", "type", "{{ type }}"],
+        ["==", "type", "shed"],
         ["any", ["!has", "level"], ["==", "level", 0]],
         ["!=", "private", 1]
       ],
       "layout": {
-        "icon-image": "bicycle_parking_{{ type }}_11",
+        "icon-image": "bicycle_parking_shed_11",
         "icon-ignore-placement": true,
         "icon-allow-overlap": true,
         "text-anchor": "top",
@@ -2411,9 +2349,9 @@
         "text-halo-width": 1
       }
     },
-    {% endfor %}
+    {% for type in ["lockers", "covered"] %}
     {
-      "id": "poi-bicycle-repair-station",
+      "id": "poi-bicycle-parking-{{ type }}",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
@@ -2421,13 +2359,46 @@
       "filter": [
         "all",
         ["==", "$type", "Point"],
-        ["==", "class", "amenity"],
-        ["in", "subclass", "bicycle_repair_station"],
-        ["==", "tools", "yes"],
+        ["==", "subclass", "bicycle_parking"],
+        ["==", "type", "{{ type }}"],
+        ["any", ["!has", "level"], ["==", "level", 0]],
+        ["!=", "private", 1]
+      ],
+      "layout": {
+        "icon-image": "bicycle_parking_{{ type }}_11",
+        "text-anchor": "top",
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-font": ["Noto Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-padding": 2,
+        "text-size": 12,
+        "symbol-sort-key": 1
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      }
+    },
+    {% endfor %}
+    {
+      "id": "poi-bicycle-parking-public",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "subclass", "bicycle_parking"],
+        ["!=", "private", 1],
+        ["!has", "type"],
         ["any", ["!has", "level"], ["==", "level", 0]]
       ],
       "layout": {
-        "icon-image": "bicycle_repair_station_11",
+        "icon-image": "bicycle_parking_11",
         "text-anchor": "top",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": ["Noto Sans Regular"],
@@ -2460,6 +2431,67 @@
       ],
       "layout": {
         "icon-image": "bicycle_pump",
+        "text-anchor": "top",
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-font": ["Noto Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-padding": 2,
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "poi-bicycle-repair-station",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "class", "amenity"],
+        ["in", "subclass", "bicycle_repair_station"],
+        ["==", "tools", "yes"],
+        ["any", ["!has", "level"], ["==", "level", 0]]
+      ],
+      "layout": {
+        "icon-image": "bicycle_repair_station_11",
+        "text-anchor": "top",
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-font": ["Noto Sans Regular"],
+        "text-max-width": 9,
+        "text-offset": [0, 0.6],
+        "text-padding": 2,
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#666",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "#ffffff",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "poi-bicycle-parking-private",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 16,
+      "filter": [
+        "all",
+        ["==", "$type", "Point"],
+        ["==", "subclass", "bicycle_parking"],
+        ["==", "private", 1],
+        ["any", ["!has", "level"], ["==", "level", 0]]
+      ],
+      "layout": {
+        "icon-image": "bicycle_parking_private_11",
         "text-anchor": "top",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": ["Noto Sans Regular"],

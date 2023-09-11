@@ -700,30 +700,40 @@ function WritePOI(obj,class,subclass,rank)
 	if rank>4 then layer="poi_detail" end
 	obj:LayerAsCentroid(layer)
 	SetNameAttributes(obj)
-	obj:AttributeNumeric("rank", rank)
 	obj:Attribute("class", class)
 	obj:Attribute("subclass", subclass)
 
 	if subclass=="bicycle_parking" then
 		local access = obj:Find("access")
 
-		if obj:Find("access")=="customers" and obj:Find("fee")=="yes" and obj:Holds("operator") and obj:Find("operator"):startswith("Bane") then
+		if access=="customers" and obj:Find("fee")=="yes" and obj:Holds("operator") and obj:Find("operator"):startswith("Bane") then
 			obj:Attribute("type", "shed")
 			obj:Attribute("capacity", obj:Find("capacity"))
+			obj:AttributeNumeric("rank", 13)
 		elseif obj:Find("bicycle_parking")=="lockers" then
 			obj:Attribute("type", "lockers")
+			obj:AttributeNumeric("rank", 15)
 		elseif obj:Find("covered")=="yes" then
 			obj:Attribute("type", "covered")
-		end
-
-		if access=="private" or access=="no" then
+			obj:AttributeNumeric("rank", 17)
+		elseif access=="private" or access=="no" then
 			obj:AttributeNumeric("private", 1)
+			obj:AttributeNumeric("rank", 25)
+		else
+			obj:AttributeNumeric("rank", 19)
 		end
-	end
-
-	if subclass=="bicycle_repair_station" then
+	elseif subclass=="bicycle_repair_station" then
 		obj:Attribute("pump", obj:Find("service:bicycle:pump"))
 		obj:Attribute("tools", obj:Find("service:bicycle:tools"))
+		if has_thruthy_tag(obj, "service:bicycle:pump") then
+			obj:AttributeNumeric("rank", 21)
+		elseif has_thruthy_tag(obj, "service:bicycle:tools") then
+			obj:AttributeNumeric("rank", 23)
+		else
+			obj:AttributeNumeric("rank", rank)
+		end
+	else
+		obj:AttributeNumeric("rank", rank)
 	end
 
 	if subclass=="sports" then
