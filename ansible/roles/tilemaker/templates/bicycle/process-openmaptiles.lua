@@ -396,7 +396,7 @@ function way_function(way)
 				-- **** TODO
 			end
 
-			local has_cycleway = has_thruthy_tag(way, "cycleway") or has_thruthy_tag(way, "cycleway:left") or has_thruthy_tag(way, "cycleway:right") or highway == "cycleway"
+			local has_cycleway = not_separate(way, "cycleway") or not_separate(way, "cycleway:left") or not_separate(way, "cycleway:right") or highway == "cycleway"
 			if has_cycleway then
 				way:AttributeNumeric("cycleway", 1)
 			end
@@ -676,6 +676,10 @@ end
 
 function has_falsy_tag(item, tag)
 	return item:Holds(tag) and item:Find(tag)=="no"
+end
+
+function not_separate(item, tag)
+	return has_thruthy_tag(item, tag) and item:Find(tag)~="separate"
 end
 
 function has_value(arr, val)
