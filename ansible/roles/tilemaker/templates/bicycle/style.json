@@ -3223,6 +3223,23 @@
       }
     },
     {
+      "id": "construction",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 11,
+      "filter": [
+        "all",
+        ["==", "class", "construction"]
+      ],
+      "layout": {
+        "icon-image": "construction_11",
+        "icon-rotation-alignment": "viewport",
+        "symbol-placement": "line",
+        "symbol-spacing": 400
+      }
+    },
+    {
       "id": "airport-label-major",
       "type": "symbol",
       "source": "openmaptiles",
