@@ -3223,14 +3223,14 @@
       }
     },
     {
-      "id": "construction",
+      "id": "road_construction",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 11,
+      "minzoom": 12,
       "filter": [
         "all",
-        ["==", "class", "construction"]
+        ["==", "road_construction", 1]
       ],
       "layout": {
         "icon-image": "construction_11",
