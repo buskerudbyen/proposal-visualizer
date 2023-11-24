@@ -357,18 +357,10 @@ function way_function(way)
 		end
 
 		-- Construction
-		if highway == "construction" then
-			if constructionValues[construction] then
-				h = construction .. "_construction"
-				if construction ~= "service" and construction ~= "track" then
-					minzoom = 11
-				else
-					minzoom = 12
-				end
-			else
-				h = "minor_construction"
-				minzoom = 14
-			end
+		local road_construction = false
+		if highway == "construction" and (construction ~= "motorway" or has_falsy_tag("bicycle")) then
+			road_construction = true
+			minzoom = 12
 		end
 
 		-- Write to layer
@@ -379,6 +371,8 @@ function way_function(way)
 			way:Attribute("class", h)
 			SetBrunnelAttributes(way)
 			if ramp then way:AttributeNumeric("ramp",1) end
+
+			if road_construction then way:AttributeNumeric("road_construction", 1) end
 
 			-- No bike roads
 			if has_falsy_tag(way, "bicycle") or has_thruthy_tag(way, "motorroad") then

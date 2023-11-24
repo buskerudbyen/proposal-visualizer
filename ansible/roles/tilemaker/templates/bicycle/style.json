@@ -3273,6 +3273,23 @@
       }
     },
     {
+      "id": "road_construction",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        ["==", "road_construction", 1]
+      ],
+      "layout": {
+        "icon-image": "construction_11",
+        "icon-rotation-alignment": "viewport",
+        "symbol-placement": "line",
+        "symbol-spacing": 400
+      }
+    },
+    {
       "id": "airport-label-major",
       "type": "symbol",
       "source": "openmaptiles",
