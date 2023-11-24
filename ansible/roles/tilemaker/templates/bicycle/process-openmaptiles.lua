@@ -358,7 +358,7 @@ function way_function(way)
 
 		-- Construction
 		local road_construction = false
-		if highway == "construction" and (construction ~= "motorway" or has_falsy_tag("bicycle")) then
+		if highway == "construction" and (construction ~= "motorway" or has_falsy_tag(way, "bicycle")) then
 			road_construction = true
 			minzoom = 12
 		end
