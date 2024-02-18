@@ -384,10 +384,18 @@ function way_function(way)
 
 			local oneway = way:Find("oneway")
 			if oneway == "yes" or oneway == "1" then
-				way:AttributeNumeric("oneway",1)
+				if has_falsy_tag(way, "oneway:bicycle") then
+					way:AttributeNumeric("oneway", 2)
+				else
+					way:AttributeNumeric("oneway", 1)
+				end
 			end
 			if oneway == "-1" then
-				-- **** TODO
+				if has_falsy_tag(way, "oneway:bicycle") then
+					way:AttributeNumeric("oneway", -2)
+				else
+					way:AttributeNumeric("oneway", -1)
+				end
 			end
 
 			local has_cycleway = not_separate(way, "cycleway") or not_separate(way, "cycleway:left") or not_separate(way, "cycleway:right") or highway == "cycleway"
