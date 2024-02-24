@@ -14,7 +14,7 @@
       "type": "vehicle-parking",
       "feedId": "bikely",
       "sourceType": "bikely",
-      "url": "https://api.safebikely.com/api/v1/s/locations",
+      "url": "https://api.safebikely.com/api/services/app/Location/GetPins",
       "headers": {
         "X-Bikely-Token": "${BIKELY_TOKEN}",
         "Authorization": "${BIKELY_AUTHORIZATION}"
