@@ -1,24 +1,22 @@
 {
-  "vectorTileLayers": [
-    {
-      "name": "bikely",
-      "type": "VehicleParking",
-      "mapper": "Stadtnavi",
-      "maxZoom": 20,
-      "minZoom": 6,
-      "cacheMaxSeconds": 300
-    }
-  ],
+  "vectorTiles": {
+    "layers": [
+      {
+        "name": "bikely",
+        "type": "VehicleParking",
+        "mapper": "Stadtnavi",
+        "maxZoom": 20,
+        "minZoom": 6,
+        "cacheMaxSeconds": 300
+      }
+    ]
+  },
   "updaters": [
     {
       "type": "vehicle-parking",
       "feedId": "bikely",
       "sourceType": "bikely",
-      "url": "https://api.safebikely.com/api/v1/s/locations",
-      "headers": {
-        "X-Bikely-Token": "${BIKELY_TOKEN}",
-        "Authorization": "${BIKELY_AUTHORIZATION}"
-      }
+      "url" : "https://api.safebikely.com/api/services/app/Location/GetPins"
     }
   ]
 }
