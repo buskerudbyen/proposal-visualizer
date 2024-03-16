@@ -3035,6 +3035,25 @@
       }
     },
     {
+      "id": "poi-slow-road",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 15,
+      "filter": [
+        "all",
+        ["!has", "no_bike"],
+        ["!has", "cycleway"],
+        ["==", "slow-road", 1]
+      ],
+      "layout": {"line-join": "round", "visibility": "visible"},
+      "paint": {
+        "line-color": "#c7b602",
+        "line-dasharray": [3, 5],
+        "line-width": 2
+      }
+    },
+    {
       "id": "poi-sports-centre",
       "type": "symbol",
       "source": "openmaptiles",

@@ -403,6 +403,12 @@ function way_function(way)
 				way:AttributeNumeric("cycleway", 1)
 			end
 
+			way:Attribute("maxspeed", way:Find("maxspeed"))
+			-- slow roads
+			if get_maxspeed(way) < 40 or highway == "living_street" then
+				way:AttributeNumeric("slow-road", 1)
+			end
+
 			if h=="track" and has_thruthy_tag(way, "bicycle") then
 				local tracktype = way:Find("tracktype")
 				local tracktypeArray = {"grade3", "grade2", "grade1"}
@@ -691,6 +697,21 @@ function has_value(arr, val)
 		end
 	end
 	return false
+end
+
+function get_maxspeed(item)
+	local value = item:Find("maxspeed")
+	if value == nil then
+		return 500
+	end
+
+	local number_value = tonumber(value)
+
+	if number_value == nil then
+		return 500
+	end
+
+	return number_value
 end
 
 -- ==========================================================
