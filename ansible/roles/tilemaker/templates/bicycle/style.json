@@ -3062,7 +3062,7 @@
       "filter": [
         "all",
         ["==", "$type", "Point"],
-        ["==", "class", "building"],
+        ["in", "class", "building", "leisure"],
         ["==", "subclass", "sports_centre"],
         ["any", ["has", "name:latin"], ["has", "name:nonlatin"]]
       ],
