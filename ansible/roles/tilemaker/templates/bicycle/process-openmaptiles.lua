@@ -759,15 +759,16 @@ function WritePOI(obj,class,subclass,rank)
 		obj:AttributeNumeric("rank", rank)
 	end
 
-	if subclass=="sports" then
+	if class=="shop" then
 		local isBike = "no"
-		local repair = obj:Find("service:bicycle:repair") == "yes"
-		local retail = obj:Find("service:bicycle:retail") == "yes"
-		local second_hand = obj:Find("service:bicycle:second_hand") == "yes"
-		if repair or retail or second_hand then
+		local sales = has_thruthy_tag(obj, "service:bicycle:sales")
+		local repair = has_thruthy_tag(obj, "service:bicycle:repair")
+		local retail = has_thruthy_tag(obj, "service:bicycle:retail")
+		local second_hand = has_thruthy_tag(obj, "service:bicycle:second_hand")
+		if subclass=="bicycle" or sales or repair or retail or second_hand then
 			isBike = "yes"
 		end
-		obj:Attribute("bike", isBike)
+		obj:Attribute("bikeShop", isBike)
 	end
 
 	if class=="tourism" and subclass=="information" and obj:Holds("information") and obj:Find("information") == "office" then
