@@ -252,7 +252,8 @@ function relation_function(relation)
 		local networks = {
 			["lcn"] = "local",
 			["rcn"] = "local",
-			["ncn"] = "national"
+			["ncn"] = "national",
+			["icn"] = "international"
 		}
 
 		local network = relation:Find("network")
