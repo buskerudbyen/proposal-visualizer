@@ -240,6 +240,7 @@ function relation_function(relation)
 		relation:Attribute("name", relation:Find("name"))
 		relation:Attribute("from", relation:Find("from"))
 		relation:Attribute("to", relation:Find("to"))
+		relation:Attribute("website", relation:Find("website"))
 
 		local ref = relation:Find("ref")
 		if ref~="" then
