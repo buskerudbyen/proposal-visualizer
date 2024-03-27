@@ -13,7 +13,7 @@ preferred_language_attribute = "name:latin"
 -- If OSM's name tag differs, then write it into this attribute (usually "name_int"):
 default_language_attribute = "name_int"
 -- Also write these languages if they differ - for example, { "de", "fr" }
-additional_languages = { }
+additional_languages = { "no", "de", "en", "fr" }
 --------
 
 -- Enter/exit Tilemaker
@@ -236,6 +236,11 @@ function relation_function(relation)
 		relation:Layer("transportation", false)
 		relation:Attribute("class", "bicycle_route")
 		relation:Attribute("ref", relation:Find("ref"))
+		relation:Attribute("description", relation:Find("description"))
+		relation:Attribute("name", relation:Find("name"))
+		relation:Attribute("from", relation:Find("from"))
+		relation:Attribute("to", relation:Find("to"))
+		relation:Attribute("website", relation:Find("website"))
 
 		local ref = relation:Find("ref")
 		if ref~="" then
@@ -246,8 +251,9 @@ function relation_function(relation)
 
 		local networks = {
 			["lcn"] = "local",
-			["rcn"] = "local",
-			["ncn"] = "national"
+			["rcn"] = "regional",
+			["ncn"] = "national",
+			["icn"] = "international"
 		}
 
 		local network = relation:Find("network")
