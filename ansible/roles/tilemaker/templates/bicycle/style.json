@@ -2581,8 +2581,7 @@
         "all",
         ["==", "$type", "Point"],
         ["==", "class", "shop"],
-        ["in", "subclass", "bicycle", "sports"],
-        ["any", ["!has", "bike"], ["==", "bike", "yes"]]
+        ["==", "bikeShop", "yes"]
       ],
       "layout": {
         "icon-image": "bicycle_shop_11",
