@@ -15,7 +15,7 @@ ExecStart=podman run \
     --pull=always \
     --name %n \
     --rm -p {{ otp_port }}:8080 \
-    -e JAVA_OPTS="-Xmx1G" \
+    -e JAVA_OPTS="-Xmx2G" \
     -e BIKELY_TOKEN="{{ bikely_token }}" \
     -e BIKELY_AUTHORIZATION="{{ bikely_authorization }}" \
     {{ otp_image }}
