@@ -1,4 +1,4 @@
-FROM docker.io/opentripplanner/opentripplanner:2.5.0_2024-03-04T09-14
+FROM docker.io/lehrenfried/opentripplanner:fix-vehicle-parking
 
 ## need to override the data location because /var/opentripplanner/ is a volume
 WORKDIR /var/otp/

@@ -7,7 +7,7 @@
         "mapper": "Stadtnavi",
         "maxZoom": 20,
         "minZoom": 6,
-        "cacheMaxSeconds": 300
+        "cacheMaxSeconds": 30
       }
     ]
   },
