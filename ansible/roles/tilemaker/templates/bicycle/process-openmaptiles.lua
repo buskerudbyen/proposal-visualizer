@@ -658,6 +658,12 @@ function way_function(way)
 		end
 	end
 
+	if man_made=="bridge" then
+		way:Layer("transportation_name", false)
+		SetNameAttributes(way)
+		way:Attribute("man_made", "bridge")
+	end
+
 	-- POIs ('poi' and 'poi_detail')
 	local rank, class, subclass = GetPOIRank(way)
 	if rank then WritePOI(way,class,subclass,rank); return end
