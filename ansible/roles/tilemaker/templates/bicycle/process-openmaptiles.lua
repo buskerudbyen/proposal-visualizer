@@ -112,6 +112,10 @@ function node_function(node)
 		elseif place == "locality"      then mz=13
 		end
 
+		if node:Find("name") == "Hesten trenger kvile" then
+			return
+		end
+
 		node:Layer("place", false)
 		node:Attribute("class", place)
 		node:MinZoom(mz)
