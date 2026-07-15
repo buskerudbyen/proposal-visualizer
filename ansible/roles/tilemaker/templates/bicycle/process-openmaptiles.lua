@@ -156,6 +156,7 @@ trackValues     = Set { "cycleway", "byway", "bridleway", "track" }
 pathValues      = Set { "footway", "path", "steps", "pedestrian" }
 linkValues      = Set { "motorway_link", "trunk_link", "primary_link", "secondary_link", "tertiary_link" }
 constructionValues = Set { "primary", "secondary", "tertiary", "motorway", "service", "trunk", "track" }
+embeddedTrackValues = Set { "tram", "light_rail", "rail", "disused", "yes" }
 
 aerowayBuildings= Set { "terminal", "gate", "tower" }
 landuseKeys     = Set { "school", "university", "kindergarten", "college", "library", "hospital",
@@ -661,6 +662,13 @@ function way_function(way)
 			way:Attribute("class", "pitch")
 		end
 	end
+
+
+	local embeddedTrack = way:Find("embedded_track")
+  if embeddedTrackValues[embeddedTrack] then
+		way:Attribute("embedded_track", "1")
+  end
+
 
 	-- POIs ('poi' and 'poi_detail')
 	local rank, class, subclass = GetPOIRank(way)
