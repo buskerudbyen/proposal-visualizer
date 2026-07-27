@@ -156,7 +156,7 @@ trackValues     = Set { "cycleway", "byway", "bridleway", "track" }
 pathValues      = Set { "footway", "path", "steps", "pedestrian" }
 linkValues      = Set { "motorway_link", "trunk_link", "primary_link", "secondary_link", "tertiary_link" }
 constructionValues = Set { "primary", "secondary", "tertiary", "motorway", "service", "trunk", "track" }
-embeddedTrackValues = Set { "tram", "light_rail", "rail", "disused", "yes" }
+embeddedRailsValues = Set { "tram", "light_rail", "rail", "disused", "yes" }
 
 aerowayBuildings= Set { "terminal", "gate", "tower" }
 landuseKeys     = Set { "school", "university", "kindergarten", "college", "library", "hospital",
@@ -420,6 +420,11 @@ function way_function(way)
 				way:AttributeNumeric("slow-road", 1)
 			end
 
+      local embeddedTrack = way:Find("embedded_rails")
+      if embeddedRailsValues[embeddedTrack] then
+    		way:AttributeNumeric("embedded_rails", 1)
+      end
+
 			if h=="track" and has_thruthy_tag(way, "bicycle") then
 				local tracktype = way:Find("tracktype")
 				local tracktypeArray = {"grade3", "grade2", "grade1"}
@@ -664,10 +669,6 @@ function way_function(way)
 	end
 
 
-	local embeddedTrack = way:Find("embedded_track")
-  if embeddedTrackValues[embeddedTrack] then
-		way:Attribute("embedded_track", "1")
-  end
 
 
 	-- POIs ('poi' and 'poi_detail')
